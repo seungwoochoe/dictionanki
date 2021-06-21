@@ -3,7 +3,7 @@ function run(input, parameters) {
   let divider = "@";
 
   // You can change ending character by changing "ending" variable below.
-  let ending = "&";
+  let ending = "&\n";
 
   // You can change how many underscores to input by changing "blank" variable below.
   blank = " ___________ ";
@@ -103,6 +103,8 @@ function formatByNumbers(text) {
   text = text.replaceAll(" 5 ", "\n5 ");
   text = text.replaceAll(" 6 ", "\n6 ");
   text = text.replaceAll(" 7 ", "\n7 ");
+  text = text.replaceAll(" 8 ", "\n8 ");
+  text = text.replaceAll(" 9 ", "\n9 ");
   text = text.replaceAll(" •", "\n •");
   return text;
 }
@@ -154,6 +156,7 @@ function hideWordsFromDefinition(text, word) {
   text = text.replaceAll(" " + word + "ed)", blankCloseParanthesis);
   text = text.replaceAll(" " + word + "ing)", blankCloseParanthesis);
   text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing)", blankCloseParanthesis);
+  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies)", blankCloseParanthesis);
 
   let blankParanthesis = "(" + blank.substring(1, blank.length - 1) + ")";
   text = text.replaceAll("(" + word + ")", blankParanthesis);
