@@ -148,6 +148,16 @@ function hideWordsFromDefinition(text, word) {
   text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing,", blankComma);
   text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies,", blankComma);
 
+  let blankColon = blank.substring(0, blank.length - 1) + ",";
+  text = text.replaceAll(" " + word + ":", blankColon);
+  text = text.replaceAll(" " + word + "s:", blankColon);
+  text = text.replaceAll(" " + word + "es:", blankColon);
+  text = text.replaceAll(" " + word + "d:", blankColon);
+  text = text.replaceAll(" " + word + "ed:", blankColon);
+  text = text.replaceAll(" " + word + "ing:", blankColon);
+  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing:", blankColon);
+  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies:", blankColon);
+
   let blankOpenParanthesis = "(" + blank.substring(1, blank.length);
   text = text.replaceAll("(" + word + " ", blankOpenParanthesis);
   text = text.replaceAll("(" + word + "s ", blankOpenParanthesis);
