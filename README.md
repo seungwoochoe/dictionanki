@@ -1,4 +1,4 @@
-# A javascript code which can be used to retrieve data from macOS Dictionary.app
+# A javascript code which can be used to retrieve definition of words from macOS Dictionary.app and hide original words from example sentences
 
 You can use this code to make Automator Quick Action that retrieve definition from dictionary.app and hide original word from example sentences.
 
