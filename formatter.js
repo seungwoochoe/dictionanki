@@ -10,7 +10,7 @@ function run(input, parameters) {
   
   let wholeText = input[0];
   let word = getWord(wholeText);
-  let definition = getDefinition(wholeText);
+  let definition = getDefinition(word, wholeText);
   let result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
   return result;
 }
@@ -25,10 +25,10 @@ function getWord(text) {
   return word;
 }
 
-function getDefinition(text) {
+function getDefinition(word, text) {
   let prunedText = pruneText(text);
   let formattedText = formatText(prunedText);
-  let result = hide(formattedText).trimStart();
+  let result = hide(word, formattedText).trimStart();
   return result;
 }
 
