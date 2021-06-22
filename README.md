@@ -3,7 +3,7 @@
 You can use this code to make Automator Quick Action that retrieve definition from dictionary.app and hide original word from example sentences.
 
 
-## Quick Action Example
+## Quick Action example
 Automator - new Quick Action  
 get text input from selection  
 Set Value of Variable  
@@ -16,4 +16,9 @@ Set Contents of TextEdit Document
   
 Then assign shortcut to this action.  
   
-When you select specific word and press shortcut, dictionary search result will show up, and the result will be written in new TextEdit file.  
+When you select a specific word and press shortcut, dictionary.app search result will show up, and the result will be written in new TextEdit file.  
+
+
+### Limitations
+- Formatting is not perfect. For example, if there are keywords like "noun" in definition of word, formatting might not act as intended. Also, places of "[with object]" kind of things might not the same as original dictionary.
+- I am testing this code only with *New Oxford American Dictionary (English (US))*.
