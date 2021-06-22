@@ -1,19 +1,18 @@
 function run(input, parameters) {
-  // You can change dividing character between term and definition by changing "divider" variable below.
-  let divider = "@";
 
-  // You can change ending character by changing "ending" variable below.
-  let ending = "&\n";
+  // You can change variables from here
+  let dividerBetweenWordAndDefinition = "@";
+  let endingCharacter = "&\n";
+  hideWordsFromDefinition = true;
+  blank = " ____________ ";
+  // to here as your using purpose.
 
-  // You can change how many underscores to input by changing "blank" variable below.
-  blank = " ___________ ";
-    
+  
   let wholeText = input[0];
   let word = getWord(wholeText);
   let definition = getDefinition(wholeText);
-  let editedDefinition = hideWordsFromDefinition(definition, word).trimStart();
-  let result = `${word}${divider}${editedDefinition}${ending}`;
-  return  result;
+  let result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
+  return result;
 }
 
 
@@ -29,7 +28,8 @@ function getWord(text) {
 function getDefinition(text) {
   let prunedText = pruneText(text);
   let formattedText = formatText(prunedText);
-  return formattedText;
+  let result = hide(formattedText).trimStart();
+  return result;
 }
 
 function pruneText(text) {
@@ -118,75 +118,76 @@ function formatByPartOfSpeech(text) {
   return text;
 }
 
-function hideWordsFromDefinition(text, word) {
-  text = text.replaceAll(" " + word + " ", blank);
-  text = text.replaceAll(" " + word + "d ", blank);
-  text = text.replaceAll(" " + word + "ed ", blank);
-  text = text.replaceAll(" " + word + "s ", blank);
-  text = text.replaceAll(" " + word + "es ", blank);
-  text = text.replaceAll(" " + word + "ing ", blank);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing ", blank);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies ", blank);
-
-  let blankDot = blank.substring(0, blank.length - 1) + ".";
-  text = text.replaceAll(" " + word + ".", blankDot);
-  text = text.replaceAll(" " + word + "s.", blankDot);
-  text = text.replaceAll(" " + word + "es.", blankDot);
-  text = text.replaceAll(" " + word + "d.", blankDot);
-  text = text.replaceAll(" " + word + "ed.", blankDot);
-  text = text.replaceAll(" " + word + "ing.", blankDot);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing.", blankDot);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies.", blankDot);
-
-  let blankComma = blank.substring(0, blank.length - 1) + ",";
-  text = text.replaceAll(" " + word + ",", blankComma);
-  text = text.replaceAll(" " + word + "s,", blankComma);
-  text = text.replaceAll(" " + word + "es,", blankComma);
-  text = text.replaceAll(" " + word + "d,", blankComma);
-  text = text.replaceAll(" " + word + "ed,", blankComma);
-  text = text.replaceAll(" " + word + "ing,", blankComma);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing,", blankComma);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies,", blankComma);
-
-  let blankColon = blank.substring(0, blank.length - 1) + ",";
-  text = text.replaceAll(" " + word + ":", blankColon);
-  text = text.replaceAll(" " + word + "s:", blankColon);
-  text = text.replaceAll(" " + word + "es:", blankColon);
-  text = text.replaceAll(" " + word + "d:", blankColon);
-  text = text.replaceAll(" " + word + "ed:", blankColon);
-  text = text.replaceAll(" " + word + "ing:", blankColon);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing:", blankColon);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies:", blankColon);
-
-  let blankOpenParanthesis = "(" + blank.substring(1, blank.length);
-  text = text.replaceAll("(" + word + " ", blankOpenParanthesis);
-  text = text.replaceAll("(" + word + "s ", blankOpenParanthesis);
-  text = text.replaceAll("(" + word + "es ", blankOpenParanthesis);
-  text = text.replaceAll("(" + word + "d ", blankOpenParanthesis);
-  text = text.replaceAll("(" + word + "ed ", blankOpenParanthesis);
-  text = text.replaceAll("(" + word + "ing ", blankOpenParanthesis);
-  text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ing ", blankOpenParanthesis);
-  text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies ", blankOpenParanthesis);
-
-  let blankCloseParanthesis = blank.substring(0, blank.length - 1) + ")";
-  text = text.replaceAll(" " + word + ")", blankCloseParanthesis);
-  text = text.replaceAll(" " + word + "s)", blankCloseParanthesis);
-  text = text.replaceAll(" " + word + "es)", blankCloseParanthesis);
-  text = text.replaceAll(" " + word + "d)", blankCloseParanthesis);
-  text = text.replaceAll(" " + word + "ed)", blankCloseParanthesis);
-  text = text.replaceAll(" " + word + "ing)", blankCloseParanthesis);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing)", blankCloseParanthesis);
-  text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies)", blankCloseParanthesis);
-
-  let blankParanthesis = "(" + blank.substring(1, blank.length - 1) + ")";
-  text = text.replaceAll("(" + word + ")", blankParanthesis);
-  text = text.replaceAll("(" + word + "s)", blankParanthesis);
-  text = text.replaceAll("(" + word + "es)", blankParanthesis);
-  text = text.replaceAll("(" + word + "d)", blankParanthesis);
-  text = text.replaceAll("(" + word + "ed)", blankParanthesis);
-  text = text.replaceAll("(" + word + "ing)", blankParanthesis);
-  text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ing)", blankParanthesis);
-  text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies)", blankParanthesis);
-
+function hide(word, text) {
+  if (hideWordsFromDefinition === true) {
+    text = text.replaceAll(" " + word + " ", blank);
+    text = text.replaceAll(" " + word + "d ", blank);
+    text = text.replaceAll(" " + word + "ed ", blank);
+    text = text.replaceAll(" " + word + "s ", blank);
+    text = text.replaceAll(" " + word + "es ", blank);
+    text = text.replaceAll(" " + word + "ing ", blank);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing ", blank);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies ", blank);
+  
+    let blankDot = blank.substring(0, blank.length - 1) + ".";
+    text = text.replaceAll(" " + word + ".", blankDot);
+    text = text.replaceAll(" " + word + "s.", blankDot);
+    text = text.replaceAll(" " + word + "es.", blankDot);
+    text = text.replaceAll(" " + word + "d.", blankDot);
+    text = text.replaceAll(" " + word + "ed.", blankDot);
+    text = text.replaceAll(" " + word + "ing.", blankDot);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing.", blankDot);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies.", blankDot);
+  
+    let blankComma = blank.substring(0, blank.length - 1) + ",";
+    text = text.replaceAll(" " + word + ",", blankComma);
+    text = text.replaceAll(" " + word + "s,", blankComma);
+    text = text.replaceAll(" " + word + "es,", blankComma);
+    text = text.replaceAll(" " + word + "d,", blankComma);
+    text = text.replaceAll(" " + word + "ed,", blankComma);
+    text = text.replaceAll(" " + word + "ing,", blankComma);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing,", blankComma);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies,", blankComma);
+  
+    let blankColon = blank.substring(0, blank.length - 1) + ",";
+    text = text.replaceAll(" " + word + ":", blankColon);
+    text = text.replaceAll(" " + word + "s:", blankColon);
+    text = text.replaceAll(" " + word + "es:", blankColon);
+    text = text.replaceAll(" " + word + "d:", blankColon);
+    text = text.replaceAll(" " + word + "ed:", blankColon);
+    text = text.replaceAll(" " + word + "ing:", blankColon);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing:", blankColon);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies:", blankColon);
+  
+    let blankOpenParanthesis = "(" + blank.substring(1, blank.length);
+    text = text.replaceAll("(" + word + " ", blankOpenParanthesis);
+    text = text.replaceAll("(" + word + "s ", blankOpenParanthesis);
+    text = text.replaceAll("(" + word + "es ", blankOpenParanthesis);
+    text = text.replaceAll("(" + word + "d ", blankOpenParanthesis);
+    text = text.replaceAll("(" + word + "ed ", blankOpenParanthesis);
+    text = text.replaceAll("(" + word + "ing ", blankOpenParanthesis);
+    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ing ", blankOpenParanthesis);
+    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies ", blankOpenParanthesis);
+  
+    let blankCloseParanthesis = blank.substring(0, blank.length - 1) + ")";
+    text = text.replaceAll(" " + word + ")", blankCloseParanthesis);
+    text = text.replaceAll(" " + word + "s)", blankCloseParanthesis);
+    text = text.replaceAll(" " + word + "es)", blankCloseParanthesis);
+    text = text.replaceAll(" " + word + "d)", blankCloseParanthesis);
+    text = text.replaceAll(" " + word + "ed)", blankCloseParanthesis);
+    text = text.replaceAll(" " + word + "ing)", blankCloseParanthesis);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing)", blankCloseParanthesis);
+    text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies)", blankCloseParanthesis);
+  
+    let blankParanthesis = "(" + blank.substring(1, blank.length - 1) + ")";
+    text = text.replaceAll("(" + word + ")", blankParanthesis);
+    text = text.replaceAll("(" + word + "s)", blankParanthesis);
+    text = text.replaceAll("(" + word + "es)", blankParanthesis);
+    text = text.replaceAll("(" + word + "d)", blankParanthesis);
+    text = text.replaceAll("(" + word + "ed)", blankParanthesis);
+    text = text.replaceAll("(" + word + "ing)", blankParanthesis);
+    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ing)", blankParanthesis);
+    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies)", blankParanthesis);
+    }
   return text;
 }
