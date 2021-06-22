@@ -8,7 +8,7 @@ Automator - new Quick Action
 get text input from selection  
 Set Value of Variable  
 Get Value of Variable (You should check "ignore this action's input" on the option.)  
-Run Shell Script (Write "open dict://$1" in shell script.)  
+Run Shell Script (Write "open dict://$1" in shell script, and change Pass input to "as arguments".)  
 get value of variable (You should check "ignore this action's input" on the option.)  
 get definition of word (I used New Oxford American Dictionary.)  
 Run Javascript (Copy and paste code from dict.js to here.)  
