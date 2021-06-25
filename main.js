@@ -1,19 +1,19 @@
+// You can change variables from here
+let dividerBetweenWordAndDefinition = "@";
+let endingCharacter = "&\n";
+let hideWordsFromDefinition = true;
+let blank = " ____________ ";
+// to here as your using purpose.
+
+
 function run(input, parameters) {
-
-  // You can change variables from here
-  let dividerBetweenWordAndDefinition = "@";
-  let endingCharacter = "&\n";
-  hideWordsFromDefinition = true;
-  blank = " ____________ ";
-  // to here as your using purpose.
-
-  
   let wholeText = input[0];
   let word = getWord(wholeText);
   let definition = getDefinition(word, wholeText);
   let result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
   return result;
 }
+
 
 
 function getWord(text) {
@@ -179,15 +179,15 @@ function hide(word, text) {
     text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing)", blankCloseParanthesis);
     text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies)", blankCloseParanthesis);
   
-    let blankParanthesis = "(" + blank.substring(1, blank.length - 1) + ")";
-    text = text.replaceAll("(" + word + ")", blankParanthesis);
-    text = text.replaceAll("(" + word + "s)", blankParanthesis);
-    text = text.replaceAll("(" + word + "es)", blankParanthesis);
-    text = text.replaceAll("(" + word + "d)", blankParanthesis);
-    text = text.replaceAll("(" + word + "ed)", blankParanthesis);
-    text = text.replaceAll("(" + word + "ing)", blankParanthesis);
-    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ing)", blankParanthesis);
-    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies)", blankParanthesis);
+    let blankParantheses = "(" + blank.substring(1, blank.length - 1) + ")";
+    text = text.replaceAll("(" + word + ")", blankParantheses);
+    text = text.replaceAll("(" + word + "s)", blankParantheses);
+    text = text.replaceAll("(" + word + "es)", blankParantheses);
+    text = text.replaceAll("(" + word + "d)", blankParantheses);
+    text = text.replaceAll("(" + word + "ed)", blankParantheses);
+    text = text.replaceAll("(" + word + "ing)", blankParantheses);
+    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ing)", blankParantheses);
+    text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies)", blankParantheses);
     }
   return text;
 }

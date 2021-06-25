@@ -1,4 +1,4 @@
-# A javascript code which can be used to retrieve definition of words from macOS Dictionary.app and hide original words from example sentences
+# MacOS Dictionary.app retriever
 
 
 ## What this code will do
