@@ -3,6 +3,7 @@ let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
 let blank = " ____________ ";
+let isRemoveDotInformation = true;
 // to here as your using purpose.
 
 
@@ -61,6 +62,9 @@ function getDefinition(word, text) {
 function pruneText(text) {
   text = removeAdditionalInformation(text);
   text = removeWordAndPronounciation(text);
+  if (isRemoveDotInformation === true) {
+    text = removeDotInformation(text);
+  }
   return text;
 }
 
@@ -119,6 +123,15 @@ function removeWordAndPronounciation(text) {
     text = text.substring(minIndex);
   }
   return text;
+}
+
+function removeDotInformation(text) {
+    while (text.includes("•")) {
+        let startIndex = text.indexOf("•") - 1;
+        let endIndex = text.indexOf(".", startIndex);
+        text = text.substring(0, startIndex) + text.substring(endIndex + 1);
+    }
+    return text;
 }
 
 function formatText(text) {
