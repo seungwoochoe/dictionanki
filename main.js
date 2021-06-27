@@ -16,15 +16,40 @@ function run(input, parameters) {
 
 
 
+// Getting word.
 function getWord(text) {
   text = text.replaceAll("·", "");
   let word = text.split(" ")[0];
+  word = removeWordException(word);
+  return word;
+}
+
+function removeWordException(word) {
+  word = remove1AfterWord(word);
+  word = removePartOfSpeechFromWord(word);
+  return word;
+}
+
+function remove1AfterWord(word) {
   if (word.charAt(word.length - 1) == "1") {
     word = word.substring(0, word.length - 1);
   }
   return word;
 }
 
+function removePartOfSpeechFromWord(word) {
+  word = word.replace("adverb", "");
+  word = word.replace("verb", "");
+  word = word.replace("noun", "");
+  word = word.replace("adjective", "");
+  word = word.replace("exclamation", "");
+  word = word.replace("preposition", "");
+  return word;
+}
+
+
+
+// Getting definition.
 function getDefinition(word, text) {
   let prunedText = pruneText(text);
   let formattedText = formatText(prunedText);
@@ -85,8 +110,13 @@ function removeWordAndPronounciation(text) {
   } else {
     exclamationIndex = Infinity;
   }
+  
   let minIndex = Math.min(nounIndex, verbIndex, adverbIndex, adjectiveIndex, exclamationIndex);
-  text = text.substring(minIndex - 1);
+  if (text[minIndex - 1] === " ") {
+    text = text.substring(minIndex - 1);
+  } else {
+    text = text.substring(minIndex);
+  }
   return text;
 }
 
