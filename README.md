@@ -2,7 +2,7 @@
 
 
 ## What this code will do
-Basically, it will get definition of word from "Get Definition of Word" action in Automator Quick Action and process it to be more readable and compact. It can also hide original words from example sentences.
+It will get input from "Get Definition of Word" action in Automator Quick Action and process it to be more readable and compact. It will remove extra information like origin of the word and phrases. It can also hide original words from example sentences. There are some options that you can change via changing variable values placed on top of the code.
 You can integrate this code to make your own Automator Quick Action which retrieves definition from Dictionary.app and hide original words from example sentences.
 
 
