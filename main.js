@@ -1,6 +1,6 @@
 // You can change variables from here
 let dividerBetweenWordAndDefinition = "@";
-let endingCharacter = "&\n";
+let endingCharacter = "  \n";
 let hideWordsFromDefinition = true;
 let blank = " ____________ ";
 // to here as your using purpose.
