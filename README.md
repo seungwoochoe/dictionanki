@@ -19,7 +19,8 @@ Set Contents of TextEdit Document
   
 Then assign shortcut to this action.
   
-When you select a specific word and press shortcut, dictionary.app search result will show up, and the result will be written in new TextEdit file.  
+When you select a specific word and press shortcut, dictionary.app search result will show up, and the result will be written in new TextEdit file.
+Now you can use this text to import vocabulary flashcard service like *Quizlet*.
 
 ## Limitations
 - Formatting is not perfect. For example, if there are keywords like "noun" in definition of word, formatting might not act as intended. Also, places of "[with object]" kind of things might not the same as original dictionary.
