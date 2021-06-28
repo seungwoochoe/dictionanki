@@ -1,11 +1,14 @@
-// You can change variables from here
+// Options start
 let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
 let blank = " ____________ ";
 let isRemoveDotInformation = true;
-// to here as your using purpose.
+let linebreak = "<br>"; // Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
+let htmlFormatting = false;
+// Options finish
 
+let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction"];
 
 function run(input, parameters) {
   let wholeText = input[0];
@@ -16,8 +19,8 @@ function run(input, parameters) {
 }
 
 
-
-// Getting word.
+// --------------------------------------------------------------------------------------
+// Getting word. ------------------------------------------------------------------------
 function getWord(text) {
   text = text.replaceAll("·", "");
   let word = text.split(" ")[0];
@@ -39,26 +42,28 @@ function remove1AfterWord(word) {
 }
 
 function removePartOfSpeechFromWord(word) {
-  word = word.replace("adverb", "");
-  word = word.replace("verb", "");
-  word = word.replace("noun", "");
-  word = word.replace("adjective", "");
-  word = word.replace("exclamation", "");
-  word = word.replace("preposition", "");
+  partOfSpeech.forEach((element) => {
+    word = word.replace(`${element}`, "");
+  })
   return word;
 }
 
 
-
-// Getting definition.
+// -----------------------------------------------------------------------------------
+// Getting definition.----------------------------------------------------------------
 function getDefinition(word, text) {
   let prunedText = pruneText(text);
   let formattedText = formatText(prunedText);
   let result = hide(word, formattedText).trimStart();
   result = removeFirstBr(result);
+  if (htmlFormatting === true) {
+    result = formatByHtml(result);
+  }
   return result;
 }
 
+
+// pruning-------------------------------------------------------------------------------
 function pruneText(text) {
   text = removeAdditionalInformation(text);
   text = removeWordAndPronounciation(text);
@@ -85,38 +90,13 @@ function removeAdditionalInformation(text) {
 }
 
 function removeWordAndPronounciation(text) {
-  let nounIndex;
-  let verbIndex;
-  let adverbIndex;
-  let adjectiveIndex;
-  let exclamationIndex;
-  if (text.includes("noun")) {
-    nounIndex = text.indexOf("noun");
-  } else {
-    nounIndex = Infinity;
-  }
-  if (text.includes("verb")) {
-    verbIndex = text.indexOf("verb");
-  } else {
-    verbIndex = Infinity;
-  }
-  if (text.includes("adverb")) {
-    adverbIndex = text.indexOf("adverb");
-  } else {
-    adverbIndex = Infinity;
-  }
-  if (text.includes("adjective")) {
-    adjectiveIndex = text.indexOf("adjective");
-  } else {
-    adjectiveIndex = Infinity;
-  }
-  if (text.includes("exclamation")) {
-    exclamationIndex = text.indexOf("exclamation");
-  } else {
-    exclamationIndex = Infinity;
-  }
-  
-  let minIndex = Math.min(nounIndex, verbIndex, adverbIndex, adjectiveIndex, exclamationIndex);
+  let indexs = [];
+  partOfSpeech.forEach((element) => {
+    if (text.includes(`${element}`)) {
+      indexs.push(text.indexOf(`${element}`));
+    }
+  })
+  let minIndex = Math.min(...indexs);
   if (text[minIndex - 1] === " ") {
     text = text.substring(minIndex - 1);
   } else {
@@ -134,6 +114,14 @@ function removeDotInformation(text) {
     return text;
 }
 
+function removeFirstBr(text) {
+  text = text.replace("<br>", "");
+  text = text.replace("<br>", "");
+  return text;
+}
+
+
+// formatting--------------------------------------------------------------------------
 function formatText(text) {
   text = formatByNumbers(text);
   text = formatByPartOfSpeech(text);
@@ -141,27 +129,26 @@ function formatText(text) {
 }
 
 function formatByNumbers(text) {
-  text = text.replaceAll(" 2 ", "<br>2 ");
-  text = text.replaceAll(" 3 ", "<br>3 ");
-  text = text.replaceAll(" 4 ", "<br>4 ");
-  text = text.replaceAll(" 5 ", "<br>5 ");
-  text = text.replaceAll(" 6 ", "<br>6 ");
-  text = text.replaceAll(" 7 ", "<br>7 ");
-  text = text.replaceAll(" 8 ", "<br>8 ");
-  text = text.replaceAll(" 9 ", "<br>9 ");
-  text = text.replaceAll(" •", "<br> •");
+  for (i = 2; i < 10; i++) {
+    text = text.replaceAll(` ${i} `, linebreak + `${i} `);
+  }
+  text = text.replaceAll(" •", linebreak + "• ");
   return text;
 }
 
 function formatByPartOfSpeech(text) {
-  text = text.replace(" noun ", "<br><br>noun<br>");
-  text = text.replace(" verb ", "<br><br>verb<br>");
-  text = text.replace(" adverb ", "<br><br>adverb<br>");
-  text = text.replace(" adjective ", "<br><br>adjective<br>");
-  text = text.replace(" exclamation ", "<br><br>exclamation<br>");
+  partOfSpeech.forEach((element) => {
+    text = text.replace(` ${element} `, `${linebreak.repeat(2)}` + `${element}` + `${linebreak}`);
+  })
   return text;
 }
 
+function formatByHtml(text) {
+
+}
+
+
+// hiding -----------------------------------------------------------------------------
 function hide(word, text) {
   if (hideWordsFromDefinition === true) {
     text = text.replaceAll(" " + word + " ", blank);
@@ -234,10 +221,4 @@ function hide(word, text) {
     text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies)", blankParantheses);
     }
   return text;
-}
-
-function removeFirstBr(text) {
-    text = text.replace("<br>", "");
-    text = text.replace("<br>", "");
-    return text;
 }
