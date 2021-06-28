@@ -2,8 +2,8 @@
 let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
-let blank = " __________ "; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
-let isRemoveDotInformation = true; // Dot information refers specific definitions starting with "•" symbol.
+let blank = " _________ "; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
+let removingDotInformation = true; // Dot information refers specific definitions starting with "•" symbol.
 let linebreak = "<br>"; // Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
 let htmlFormatting = true; // Italicize   example sentences.
 let definitionFirst = true; // Determines order between word and definition.
@@ -11,6 +11,8 @@ let definitionFirst = true; // Determines order between word and definition.
 
 
 let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction"];
+let extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
+let specialWords = ["Scottish informal", "North American", "mainly British", "British", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
 
 function run(input, parameters) {
   let wholeText = input[0];
@@ -72,25 +74,18 @@ function getDefinition(word, text) {
 function pruneText(text) {
   text = removeAdditionalInformation(text);
   text = removeWordAndPronounciation(text);
-  if (isRemoveDotInformation === true) {
+  if (removingDotInformation === true) {
     text = removeDotInformation(text);
   }
   return text;
 }
 
 function removeAdditionalInformation(text) {
-  if (text.includes("PHRASES")) {
-    text = text.substring(0, text.indexOf("PHRASES") - 1);
-  }
-  if (text.includes("PHRASAL VERBS")) {
-    text = text.substring(0, text.indexOf("PHRASAL VERBS") - 1);
-  }
-  if (text.includes("DERIVATIVES")) {
-    text = text.substring(0, text.indexOf("DERIVATIVES") - 1);
-  }
-  if (text.includes("ORIGIN")) {
-    text = text.substring(0, text.indexOf("ORIGIN") - 1);
-  }
+  extraInformation.forEach((element) => {
+    if (text.includes(`${element}`)) {
+      text = text.substring(0, text.indexOf(`${element}`) - 1);
+    }
+  })
   return text;
 }
 
@@ -126,6 +121,7 @@ function removeFirstBr(text) {
 }
 
 
+
 // formatting--------------------------------------------------------------------------
 function formatText(text) {
   text = formatByNumbers(text);
@@ -152,12 +148,33 @@ function formatByPartOfSpeech(text) {
 }
 
 function formatByHtml(text) {
+  text = italicizeExampleSentences(text);
+  text = italicizeSquareBracketWords(text);
+  text = italicizeSpecialWords(text);
+  return text;
+}
+
+
+function italicizeExampleSentences(text) {
   while (text.includes(": ")) {
     let indexOfColon = text.indexOf(": ");
     let indexOfPeriod = text.indexOf(".", indexOfColon);
     text = text.substring(0, indexOfPeriod + 1) + "</i>" + text.substring(indexOfPeriod + 1);
     text = text.replace(": ", ":<i> ");
   }
+  return text;
+}
+
+function italicizeSquareBracketWords(text) {
+  text = text.replaceAll("[", "<i>[");
+  text = text.replaceAll("]", "]</i>");
+  return text;
+}
+
+function italicizeSpecialWords(text) {
+  specialWords.forEach((element) => {
+    text = text.replaceAll(`${element}`, `<i>${element}</i>`);
+  })
   return text;
 }
 
