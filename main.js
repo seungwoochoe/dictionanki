@@ -2,11 +2,13 @@
 let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
-let blank = " ____________ ";
-let isRemoveDotInformation = true;
+let blank = " __________ "; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
+let isRemoveDotInformation = true; // Dot information refers specific definitions starting with "•" symbol.
 let linebreak = "<br>"; // Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
-let htmlFormatting = false;
+let htmlFormatting = true; // Italicize   example sentences.
+let definitionFirst = true; // Determines order between word and definition.
 // Options finish
+
 
 let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction"];
 
@@ -14,9 +16,15 @@ function run(input, parameters) {
   let wholeText = input[0];
   let word = getWord(wholeText);
   let definition = getDefinition(word, wholeText);
-  let result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
+  let result;
+  if (definitionFirst === true) {
+    result = `${definition}${dividerBetweenWordAndDefinition}${word}${endingCharacter}`;
+  } else {
+    result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
+  }
   return result;
 }
+
 
 
 // --------------------------------------------------------------------------------------
@@ -52,14 +60,11 @@ function removePartOfSpeechFromWord(word) {
 // -----------------------------------------------------------------------------------
 // Getting definition.----------------------------------------------------------------
 function getDefinition(word, text) {
-  let prunedText = pruneText(text);
-  let formattedText = formatText(prunedText);
-  let result = hide(word, formattedText).trimStart();
-  result = removeFirstBr(result);
-  if (htmlFormatting === true) {
-    result = formatByHtml(result);
-  }
-  return result;
+  text = pruneText(text);
+  text = formatText(text);
+  text = hide(word, text);
+  text = trimText(text);
+  return text;
 }
 
 
@@ -125,6 +130,9 @@ function removeFirstBr(text) {
 function formatText(text) {
   text = formatByNumbers(text);
   text = formatByPartOfSpeech(text);
+  if (htmlFormatting === true) {
+    text = formatByHtml(text);
+  }
   return text;
 }
 
@@ -144,7 +152,13 @@ function formatByPartOfSpeech(text) {
 }
 
 function formatByHtml(text) {
-
+  while (text.includes(": ")) {
+    let indexOfColon = text.indexOf(": ");
+    let indexOfPeriod = text.indexOf(".", indexOfColon);
+    text = text.substring(0, indexOfPeriod + 1) + "</i>" + text.substring(indexOfPeriod + 1);
+    text = text.replace(": ", ":<i> ");
+  }
+  return text;
 }
 
 
@@ -220,5 +234,13 @@ function hide(word, text) {
     text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ing)", blankParantheses);
     text = text.replaceAll("(" + word.substring(0, word.length - 1) + "ies)", blankParantheses);
     }
+  return text;
+}
+
+
+// Trim
+function trimText(text) {
+  text = text.trim();
+  text = removeFirstBr(text);
   return text;
 }
