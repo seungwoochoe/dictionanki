@@ -211,7 +211,7 @@ function hide(word, text) {
     text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ing,", blankComma);
     text = text.replaceAll(" " + word.substring(0, word.length - 1) + "ies,", blankComma);
   
-    let blankColon = blank.substring(0, blank.length - 1) + ",";
+    let blankColon = blank.substring(0, blank.length - 1) + ":";
     text = text.replaceAll(" " + word + ":", blankColon);
     text = text.replaceAll(" " + word + "s:", blankColon);
     text = text.replaceAll(" " + word + "es:", blankColon);
