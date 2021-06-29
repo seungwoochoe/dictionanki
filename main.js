@@ -14,6 +14,7 @@ let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "prepositi
 let extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
 let specialWords = ["Scottish informal", "North American", "mainly British", "British", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
 
+
 function run(input, parameters) {
   let wholeText = input[0];
   let word = getWord(wholeText);
@@ -65,7 +66,6 @@ function getDefinition(word, text) {
   text = pruneText(text);
   text = formatText(text);
   text = hide(word, text);
-  text = trimText(text);
   return text;
 }
 
@@ -114,12 +114,6 @@ function removeDotInformation(text) {
     return text;
 }
 
-function removeFirstBr(text) {
-  text = text.replace("<br>", "");
-  text = text.replace("<br>", "");
-  return text;
-}
-
 
 
 // formatting--------------------------------------------------------------------------
@@ -129,6 +123,7 @@ function formatText(text) {
   if (htmlFormatting === true) {
     text = formatByHtml(text);
   }
+  text = text.trim();
   return text;
 }
 
@@ -142,9 +137,17 @@ function formatByNumbers(text) {
 
 function formatByPartOfSpeech(text) {
   partOfSpeech.forEach((element) => {
-    text = text.replace(` ${element} `, `${linebreak.repeat(2)}` + `${element}` + `${linebreak}`);
+    text = text.replace(` ${element} `, `${linebreak.repeat(2)}${element}${linebreak}`);
   })
+  text = text.replace(`${linebreak}`, "");
+  text = text.replace(`${linebreak}`, "");
   return text;
+}
+
+function formatFirstSqareBracketInformationBack(text) {
+  partOfSpeech.forEach((element) => {
+    text.replace(`${element}${linebreak}[`, )
+  })
 }
 
 function formatByHtml(text) {
@@ -206,10 +209,3 @@ function hide(word, text) {
   return text;
 }
 
-
-// Trim
-function trimText(text) {
-  text = text.trim();
-  text = removeFirstBr(text);
-  return text;
-}
