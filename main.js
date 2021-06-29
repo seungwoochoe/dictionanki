@@ -2,7 +2,7 @@
 let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
-let blank = "_______"; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
+let blank = "_____"; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
 let removingDotInformation = true; // Dot information refers specific definitions starting with "•" symbol.
 let linebreak = "<br>"; // Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
 let htmlFormatting = true; // Italicize   example sentences.
@@ -184,21 +184,21 @@ function hide(word, text) {
   let wordRemovedY = word.substring(0, word.length - 1);
 
   let startingVariations = [" ", "("];
-  let verbForms = ["", "d", "ed", "s", "es", "ing"];
-  let verbFormsForWordsRemovedY = ["ing", "ied", "ies"];
+  let wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est"];
+  let wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
   let endingVariations = [" ", ".", ",", ":", ")"];
 
 
   if (hideWordsFromDefinition === true) {
     startingVariations.forEach((startingVariation) => {
-      verbForms.forEach((verbForm) => {
+      wordForms.forEach((wordForm) => {
         endingVariations.forEach((endingVariation) => {
-          text = text.replaceAll(`${startingVariation}${word}${verbForm}${endingVariation}`, `${startingVariation}${blank}${endingVariation}`);
+          text = text.replaceAll(`${startingVariation}${word}${wordForm}${endingVariation}`, `${startingVariation}${blank}${wordForm}${endingVariation}`);
         })
       })
-      verbFormsForWordsRemovedY.forEach((verbFormForRemovingY) => {
+      wordFormsWithY.forEach((wordFormWithY) => {
         endingVariations.forEach((endingVariation) => {
-          text = text.replaceAll(`${startingVariation}${wordRemovedY}${verbFormForRemovingY}${endingVariation}`, `${startingVariation}${blank}${endingVariation}`);
+          text = text.replaceAll(`${startingVariation}${wordRemovedY}${wordFormWithY}${endingVariation}`, `${startingVariation}${blank}${wordFormWithY}${endingVariation}`);
         })
       })
     })
