@@ -2,7 +2,7 @@
 let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
-let blank = "_____"; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
+let blank = "______"; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
 let removingDotInformation = true; // Dot information refers specific definitions starting with "•" symbol.
 let linebreak = "<br>"; // Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
 let htmlFormatting = true; // Italicize   example sentences.
@@ -10,7 +10,7 @@ let definitionFirst = true; // Determines order between word and definition.
 // Options finish
 
 
-let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction"];
+let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 let extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
 let specialWords = ["Scottish informal", "North American", "mainly British", "British", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
 
@@ -144,16 +144,18 @@ function formatByPartOfSpeech(text) {
   return text;
 }
 
-function formatFirstSqareBracketInformationBack(text) {
+/*function formatFirstSqareBracketInformationBack(text) {
   partOfSpeech.forEach((element) => {
-    text.replace(`${element}${linebreak}[`, )
+    text = text.replace(`${element}${linebreak}` + //, )
   })
-}
+  return text;
+}*/
 
 function formatByHtml(text) {
   text = italicizeExampleSentences(text);
   text = italicizeSquareBracketWords(text);
   text = italicizeSpecialWords(text);
+  
   return text;
 }
 
@@ -181,15 +183,19 @@ function italicizeSpecialWords(text) {
   return text;
 }
 
+function changeTextColorToGrey(text) {
+
+}
+
 
 // hiding -----------------------------------------------------------------------------
 function hide(word, text) {
   let wordRemovedY = word.substring(0, word.length - 1);
 
-  let startingVariations = [" ", "("];
+  let startingVariations = [" ", "(", '“'];
   let wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est"];
   let wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
-  let endingVariations = [" ", ".", ",", ":", ")"];
+  let endingVariations = [" ", ".", ",", ":", ";", ")", '”'];
 
 
   if (hideWordsFromDefinition === true) {
