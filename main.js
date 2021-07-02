@@ -12,7 +12,7 @@ let definitionFirst = true; // Determines order between word and definition.
 
 let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 let extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-let specialWords = ["Scottish informal", "North American", "mainly British", "British", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
+let specialWords = ["Scottish informal", "North American", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
 
 
 function run(input, parameters) {
@@ -40,8 +40,8 @@ function getWord(text) {
 }
 
 function removeWordException(word) {
-  word = remove1AfterWord(word);
-  word = removePartOfSpeechFromWord(word);
+  word = remove1AfterWord(word); // If word has multiple groups of definitions (like pad), remove 1 after word.
+  word = removePartOfSpeechFromWord(word); // There are some words that part of seech follows right after word.
   return word;
 }
 
@@ -120,6 +120,7 @@ function removeDotInformation(text) {
 function formatText(text) {
   text = formatByNumbers(text);
   text = formatByPartOfSpeech(text);
+  text = linebreakProperly(text);
   if (htmlFormatting === true) {
     text = formatByHtml(text);
   }
@@ -144,12 +145,13 @@ function formatByPartOfSpeech(text) {
   return text;
 }
 
-/*function formatFirstSqareBracketInformationBack(text) {
-  partOfSpeech.forEach((element) => {
-    text = text.replace(`${element}${linebreak}` + //, )
-  })
+function linebreakProperly(text) {
+  let regexWithSquareBrackets = /(adverb|verb|pronoun|noun|adjective|preposition|conjunction|exclamation)\<br\>(\(?[[a-zA-Z \|,;əɪɛɔʊʌt̮ʃʒθðˈàáâäæãåāôöòóœøōõo͞oèéêëēėęûüùúūîïíīįì\(\)]*?\)?) ?(\[.*?\]) /g;
+  text = text.replace(regexWithSquareBrackets, "$1 $2 $3<br>");
+  let regexWithoutSquareBrackets = /(adverb|verb|pronoun|noun|adjective|preposition|conjunction|exclamation)\<br\>(\([[a-zA-Z \|,;əɪɛɔʊʌt̮ʃʒθðˈàáâäæãåāôöòóœøōõo͞oèéêëēėęûüùúūîïíīįì\(\)]*?\)) /g;
+  text = text.replace(regexWithoutSquareBrackets, "$1 $2<br>");
   return text;
-}*/
+}
 
 function formatByHtml(text) {
   text = italicizeExampleSentences(text);
