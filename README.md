@@ -1,13 +1,13 @@
 # MacOS Dictionary.app retriever
 
-Make your English flashcard in a fast and convinient way from macOS system dictionary ⚡️
+** Make your English flashcard in a fast and convinient way from macOS system dictionary ⚡️ **
   
 This code can process plain text that *Automator "Get Definition of Word" action* retrieves from *New Oxford American Dictionary (English (US))*.
 
 ## What this code can do
 - Prune extra data from text.
-- Format definition to make it readable.
-- Modify text easy to import to vocabulary flashcard services like *Anki*.
+- Format (change lines by each meaning, italicize and dim example sentences) definition text to make it more readable.
+- Modify text to make it easy to import to the vocabulary flashcard services like *Anki*.
 - Hide original words from example sentences.
 
 ## Quick Action example
