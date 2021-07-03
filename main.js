@@ -2,7 +2,7 @@
 let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
-let blank = "_____"; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
+let blank = "______"; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
 let removingDotInformation = true; // Dot information refers specific definitions starting with "•" symbol.
 let linebreak = "<br>"; // Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
 let htmlFormatting = true; // Italicize   example sentences.
@@ -10,9 +10,9 @@ let definitionFirst = true; // Determines order between word and definition.
 // Options finish
 
 
-let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction"];
+let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 let extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-let specialWords = ["Scottish informal", "North American", "mainly British", "British", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
+let specialWords = ["&", "Scottish informal", "North American", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
 
 
 function run(input, parameters) {
@@ -40,13 +40,13 @@ function getWord(text) {
 }
 
 function removeWordException(word) {
-  word = remove1AfterWord(word);
-  word = removePartOfSpeechFromWord(word);
+  word = remove1AfterWord(word); // If word has multiple groups of definitions (like pad), remove 1 after word.
+  word = removePartOfSpeechFromWord(word); // There are some words that part of seech follows right after word.
   return word;
 }
 
 function remove1AfterWord(word) {
-  if (word.charAt(word.length - 1) == "1") {
+  if (word.charAt(word.length - 1) == "1" || word.charAt(word.length - 1) == "2") {
     word = word.substring(0, word.length - 1);
   }
   return word;
@@ -120,6 +120,7 @@ function removeDotInformation(text) {
 function formatText(text) {
   text = formatByNumbers(text);
   text = formatByPartOfSpeech(text);
+  text = breakLineProperly(text);
   if (htmlFormatting === true) {
     text = formatByHtml(text);
   }
@@ -137,23 +138,34 @@ function formatByNumbers(text) {
 
 function formatByPartOfSpeech(text) {
   partOfSpeech.forEach((element) => {
-    text = text.replace(` ${element} `, `${linebreak.repeat(2)}${element}${linebreak}`);
+    text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}  `);
   })
   text = text.replace(`${linebreak}`, "");
   text = text.replace(`${linebreak}`, "");
+  partOfSpeech.forEach((element) => {
+    let regex = `(\\(.*?)\\<br\\>\<br\\> ?(${element}) ?\\<br\\>(.*?)\\)`;
+    text = text.replace(regex, "$1$2$3");   
+  });
   return text;
 }
 
-function formatFirstSqareBracketInformationBack(text) {
+function breakLineProperly(text) {
   partOfSpeech.forEach((element) => {
-    text.replace(`${element}${linebreak}[`, )
+    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[^\\<]*?\\)?) ?(\\[.*?\\]) `, 'g');
+    text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
+    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([^\\<]*?\\)) `);
+    text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
+    let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z ]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z ]*?\\))`);
+    text = text.replace(regexForPartOfSpeechesInsideParentheses, "$1 $2 $3");
   })
+  return text;
 }
 
 function formatByHtml(text) {
   text = italicizeExampleSentences(text);
   text = italicizeSquareBracketWords(text);
   text = italicizeSpecialWords(text);
+  text = changeItalicizedTextColorToDarkgrey(text);
   return text;
 }
 
@@ -181,15 +193,21 @@ function italicizeSpecialWords(text) {
   return text;
 }
 
+function changeItalicizedTextColorToDarkgrey(text) {
+  text = text.replaceAll('<i>', '<span style="color:darkgrey"><i>');
+  text = text.replaceAll('</i>', '</i></span>');
+  return text;
+}
+
 
 // hiding -----------------------------------------------------------------------------
 function hide(word, text) {
   let wordRemovedY = word.substring(0, word.length - 1);
 
-  let startingVariations = [" ", "("];
+  let startingVariations = [" ", "(", '“'];
   let wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est"];
   let wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
-  let endingVariations = [" ", ".", ",", ":", ")"];
+  let endingVariations = [" ", ".", ",", ":", ";", ")", '”'];
 
 
   if (hideWordsFromDefinition === true) {
@@ -208,4 +226,3 @@ function hide(word, text) {
   }
   return text;
 }
-
