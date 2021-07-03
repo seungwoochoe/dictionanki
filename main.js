@@ -46,7 +46,7 @@ function removeWordException(word) {
 }
 
 function remove1AfterWord(word) {
-  if (word.charAt(word.length - 1) == "1") {
+  if (word.charAt(word.length - 1) == "1" || word.charAt(word.length - 1) == "2") {
     word = word.substring(0, word.length - 1);
   }
   return word;
@@ -138,7 +138,7 @@ function formatByNumbers(text) {
 
 function formatByPartOfSpeech(text) {
   partOfSpeech.forEach((element) => {
-    text = text.replace(` ${element} `, `${linebreak.repeat(2)}${element}${linebreak}`);
+    text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}`);
   })
   text = text.replace(`${linebreak}`, "");
   text = text.replace(`${linebreak}`, "");
@@ -151,9 +151,9 @@ function formatByPartOfSpeech(text) {
 
 function breakLineProperly(text) {
   partOfSpeech.forEach((element) => {
-    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[\\D&&^\\<]*?\\)?) ?(\\[.*?\\]) `, 'g');
+    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[^\\<]*?\\)?) ?(\\[.*?\\]) `, 'g');
     text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
-    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([\\D&&^\\<]*?\\)) `);
+    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([^\\<]*?\\)) `);
     text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
     let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z]*?\\))`);
     text = text.replace(regexForPartOfSpeechesInsideParentheses, "$1 $2 $3");
@@ -194,8 +194,8 @@ function italicizeSpecialWords(text) {
 }
 
 function changeItalicizedTextColorToDarkgrey(text) {
-  text = text.replaceAll('<i>', '<p style="color:darkgrey"><i>');
-  text = text.replaceAll('</i>', '</i></p>');
+  text = text.replaceAll('<i>', '<span style="color:darkgrey"><i>');
+  text = text.replaceAll('</i>', '</i></span>');
   return text;
 }
 
@@ -226,4 +226,3 @@ function hide(word, text) {
   }
   return text;
 }
-
