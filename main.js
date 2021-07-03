@@ -148,9 +148,9 @@ function formatByPartOfSpeech(text) {
 function breakLineProperly(text) {
   partOfSpeech.forEach((element) => {
     let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[\\D&&^<]*?\\)?) ?(\\[.*?\\]) `, 'g');
-    text = text.replace(regexWithSquareBrackets, "$1 $2 $3<br>");
+    text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
     let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([[\\D&&^<]*?\\)) `);
-    text = text.replace(regexWithoutSquareBrackets, "$1 $2<br>");
+    text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
   })
   return text;
 }
@@ -159,7 +159,7 @@ function formatByHtml(text) {
   text = italicizeExampleSentences(text);
   text = italicizeSquareBracketWords(text);
   text = italicizeSpecialWords(text);
-  
+  text = changeItalicizedTextColorToDarkgrey(text);
   return text;
 }
 
@@ -187,8 +187,10 @@ function italicizeSpecialWords(text) {
   return text;
 }
 
-function changeTextColorToGrey(text) {
-
+function changeItalicizedTextColorToDarkgrey(text) {
+  text.replaceAll('<i>', '<p style="color:darkgrey"><i>');
+  text.replaceAll('</i>', '</i></p>');
+  return text;
 }
 
 
