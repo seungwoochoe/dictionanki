@@ -155,6 +155,8 @@ function breakLineProperly(text) {
     text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
     let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([\\D&&^\\<]*?\\)) `);
     text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
+    let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z]*?\\))`);
+    text = text.replace(regexForPartOfSpeechesInsideParentheses, "$1 $2 $3");
   })
   return text;
 }
