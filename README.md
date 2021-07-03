@@ -1,12 +1,13 @@
 # MacOS Dictionary.app retriever
 
-This code will get input from "Get Definition of Word" action in *Automator* and process it to be more readable and compact.  
-There are several options that you can adjust via changing variable values placed on top of the code.
-You can integrate this code to make your own Automator Quick Action which retrieves definition from Dictionary.app.
+Make your English flashcard in a fast and convinient way from macOS system dictionary ⚡️
+  
+This code can process plain text that automator "Get Definition of Word" action retrieves from *New Oxford American Dictionary (English (US))*.
 
 ## What this code can do
-- Prune unnecessary data from text.
-- Format definition to make it easy to import to vocabulary flashcard services like *Anki* or *Quizlet*.
+- Prune extra data from text.
+- Format definition to make it readable.
+- Modify text easy to import to vocabulary flashcard services like *Anki*.
 - Hide original words from example sentences.
 
 ## Quick Action example
@@ -27,5 +28,4 @@ When you select a specific word and press shortcut, dictionary.app search result
 
 ## Limitations
 - This code only work with words with no spaces (this code can't be used to format definition of word "high school").
-- Formatting is not perfect. For example, if there are keywords like "noun" in definition of word, formatting might not act as intended. Also, places of "[with object]" kind of things might not the same as original dictionary.
 - I test this code only with *New Oxford American Dictionary (English (US))*.
