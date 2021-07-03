@@ -12,7 +12,7 @@ let definitionFirst = true; // Determines order between word and definition.
 
 let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 let extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-let specialWords = ["Scottish informal", "North American", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
+let specialWords = ["&", "Scottish informal", "North American", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing"];
 
 
 function run(input, parameters) {
@@ -138,7 +138,7 @@ function formatByNumbers(text) {
 
 function formatByPartOfSpeech(text) {
   partOfSpeech.forEach((element) => {
-    text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}`);
+    text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}  `);
   })
   text = text.replace(`${linebreak}`, "");
   text = text.replace(`${linebreak}`, "");
@@ -155,7 +155,7 @@ function breakLineProperly(text) {
     text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
     let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([^\\<]*?\\)) `);
     text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
-    let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z]*?\\))`);
+    let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z ]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z ]*?\\))`);
     text = text.replace(regexForPartOfSpeechesInsideParentheses, "$1 $2 $3");
   })
   return text;
