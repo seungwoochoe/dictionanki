@@ -120,7 +120,7 @@ function removeDotInformation(text) {
 function formatText(text) {
   text = formatByNumbers(text);
   text = formatByPartOfSpeech(text);
-  text = linebreakProperly(text);
+  text = breakLineProperly(text);
   if (htmlFormatting === true) {
     text = formatByHtml(text);
   }
@@ -145,11 +145,13 @@ function formatByPartOfSpeech(text) {
   return text;
 }
 
-function linebreakProperly(text) {
-  let regexWithSquareBrackets = /(adverb|verb|pronoun|noun|adjective|preposition|conjunction|exclamation)\<br\>(\(?[[a-zA-Z \|,;əɪɛɔʊʌt̮ʃʒθðˈàáâäæãåāôöòóœøōõo͞oèéêëēėęûüùúūîïíīįì\(\)]*?\)?) ?(\[.*?\]) /g;
-  text = text.replace(regexWithSquareBrackets, "$1 $2 $3<br>");
-  let regexWithoutSquareBrackets = /(adverb|verb|pronoun|noun|adjective|preposition|conjunction|exclamation)\<br\>(\([[a-zA-Z \|,;əɪɛɔʊʌt̮ʃʒθðˈàáâäæãåāôöòóœøōõo͞oèéêëēėęûüùúūîïíīįì\(\)]*?\)) /g;
-  text = text.replace(regexWithoutSquareBrackets, "$1 $2<br>");
+function breakLineProperly(text) {
+  partOfSpeech.forEach((element) => {
+    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[\\D&&^<]*?\\)?) ?(\\[.*?\\]) `, 'g');
+    text = text.replace(regexWithSquareBrackets, "$1 $2 $3<br>");
+    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([[\\D&&^<]*?\\)) `);
+    text = text.replace(regexWithoutSquareBrackets, "$1 $2<br>");
+  })
   return text;
 }
 
