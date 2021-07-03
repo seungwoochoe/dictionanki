@@ -2,7 +2,7 @@
 
 Make your English flashcard in a fast and convinient way from macOS system dictionary ⚡️
   
-This code can process plain text that automator "Get Definition of Word" action retrieves from *New Oxford American Dictionary (English (US))*.
+This code can process plain text that *Automator "Get Definition of Word" action* retrieves from *New Oxford American Dictionary (English (US))*.
 
 ## What this code can do
 - Prune extra data from text.
