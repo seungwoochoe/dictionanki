@@ -142,14 +142,18 @@ function formatByPartOfSpeech(text) {
   })
   text = text.replace(`${linebreak}`, "");
   text = text.replace(`${linebreak}`, "");
+  partOfSpeech.forEach((element) => {
+    let regex = `(\\(.*?)\\<br\\>\<br\\> ?(${element}) ?\\<br\\>(.*?)\\)`;
+    text = text.replace(regex, "$1$2$3");   
+  });
   return text;
 }
 
 function breakLineProperly(text) {
   partOfSpeech.forEach((element) => {
-    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[\\D&&^<]*?\\)?) ?(\\[.*?\\]) `, 'g');
+    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[\\D&&^\\<]*?\\)?) ?(\\[.*?\\]) `, 'g');
     text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
-    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([[\\D&&^<]*?\\)) `);
+    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([\\D&&^\\<]*?\\)) `);
     text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
   })
   return text;
@@ -188,8 +192,8 @@ function italicizeSpecialWords(text) {
 }
 
 function changeItalicizedTextColorToDarkgrey(text) {
-  text.replaceAll('<i>', '<p style="color:darkgrey"><i>');
-  text.replaceAll('</i>', '</i></p>');
+  text = text.replaceAll('<i>', '<p style="color:darkgrey"><i>');
+  text = text.replaceAll('</i>', '</i></p>');
   return text;
 }
 
