@@ -8,26 +8,27 @@ This code can process plain text that *Automator "Get Definition of Word" action
 - Prune extra data from text.
 - Format (change lines by each meaning, italicize and dim example sentences) definition text to make it more readable.
 - Modify text to make it easy to import to the vocabulary flashcard services like *Anki*.
-- Hide original words from example sentences.
+- Hide original words from example sentences with underscores (______).
 
 ## Limitations
-- Only work with words with no spaces (this code can't be used to format definition of word "high school").
-- doesn't work with phrases.
-- If you are apply this to homonym words, this will only get the definition of first one.
+- Doesn't work with open compound words like *ice cream*.
+- Doesn't work with phrases.
+- Only get first defitition of homonym words. (Cannot get defitition of *bat2*.)
 
 ### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
   
 Automator - new Quick Action  
   
-get text input from selection  
+Get Text Input From Selection  
 Set Value of Variable  
-Get Value of Variable (You should check "ignore this action's input" on the option.)  
+Get Value of Variable (check "ignore this action's input" on the option.)  
 Run Shell Script (Write "open dict://$1" in shell script, and change Pass input to "as arguments".)  
-Get Value of Variable (You should check "ignore this action's input" on the option.)  
-Get Definition of Word (I used New Oxford American Dictionary.)  
+Get Value of Variable (check "ignore this action's input" on the option.)  
+Get Definition of Word (*New Oxford American Dictionary (Engsish (US))*)  
 Run Javascript (Copy and paste code of main.js to here.)  
 Set Contents of TextEdit Document  
+Save
   
-Then assign shortcut to this action. (For reference, I'm using *command-option-1*.)
+Then assign shortcut to *Quick Action (.workflow)*. (For reference, I'm using *command-option-1*.)
   
-When you select a specific word and press shortcut, dictionary.app search result will show up, and the result will be written in new TextEdit file.
+When you select a specific word and press shortcut, dictionary.app search result will show up, and the result will be written in opened (or new, if there is no opened TextEdit file) TextEdit file.
