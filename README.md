@@ -11,9 +11,9 @@ This code can process plain text that *Automator "Get Definition of Word" action
 - Hide original words from example sentences with underscores (______).
 
 ## Limitations
-- Doesn't work with open compound words like *ice cream*.
-- Doesn't work with phrases.
-- Only get first defitition of homonym words. (Cannot get defitition of *bat2*.)
+- Cannot work with open compound words like *ice cream*.
+- Cannot work with phrases.
+- Cannot get second+ defititions of homonym words. (Cannot get defitition of *bat2*.)
 
 ### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
   
