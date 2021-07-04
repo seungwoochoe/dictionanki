@@ -2,12 +2,13 @@
 let dividerBetweenWordAndDefinition = "\t";
 let endingCharacter = "\n";
 let hideWordsFromDefinition = true;
-let blank = "______"; // If you set hideWordsFromDefinition value to true, given words on example sentences will replaced with this string.
-let removingDotInformation = true; // Dot information refers specific definitions starting with "•" symbol.
-let linebreak = "<br>"; // Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
-let htmlFormatting = true; // Italicize   example sentences.
+let blank = "______"; 
+let removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
+let htmlFormatting = true; // Italicize and change color of example sentences.
 let definitionFirst = true; // Determines order between word and definition.
 // Options finish
+let linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
+
 
 
 let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
