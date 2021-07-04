@@ -14,7 +14,8 @@ This code can process plain text that *Automator "Get Definition of Word" action
 - Only work with words with no spaces (this code can't be used to format definition of word "high school").
 - If you are apply this to homonym words, this will only get the definition of first one.
 
-### Quick Action example
+### Quick Action example (checkout Releases if you want use quick action I made)
+  
 Automator - new Quick Action  
   
 get text input from selection  
