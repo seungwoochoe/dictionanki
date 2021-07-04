@@ -12,9 +12,10 @@ This code can process plain text that *Automator "Get Definition of Word" action
 
 ## Limitations
 - Only work with words with no spaces (this code can't be used to format definition of word "high school").
+- doesn't work with phrases.
 - If you are apply this to homonym words, this will only get the definition of first one.
 
-### Quick Action example (checkout *Releases* if you want use quick action I made)
+### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
   
 Automator - new Quick Action  
   
