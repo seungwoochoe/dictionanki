@@ -11,8 +11,8 @@ This code can process plain text that *Automator "Get Definition of Word" action
 - Hide original words from example sentences.
 
 ## Limitations
-- This code only work with words with no spaces (this code can't be used to format definition of word "high school").
-- I test this code only with *New Oxford American Dictionary (English (US))*.
+- Only work with words with no spaces (this code can't be used to format definition of word "high school").
+- If tho word is homonym, this will only get the definition of first one.
 
 ### Quick Action example
 Automator - new Quick Action  
