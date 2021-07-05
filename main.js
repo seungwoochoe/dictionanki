@@ -30,9 +30,9 @@ function run(input, parameters) {
 // Getting word. ------------------------------------------------------------------------
 const getWord = (text) => {
   text = text.replaceAll("·", "");
-  let word = text.split(" ")[0];
-  word = removeWordException(word);
-  return word;
+  text = text.split(" ")[0];
+  text = removeWordException(text);
+  return text;
 }
 
 const removeWordException = (word) => {
@@ -103,8 +103,8 @@ const removeWordAndPronounciation = (text) => {
 
 const removeDotInformation = (text) => {
     while (text.includes("•")) {
-        let startIndex = text.indexOf("•") - 1;
-        let endIndex = text.indexOf(". ", startIndex);
+        const startIndex = text.indexOf("•") - 1;
+        const endIndex = text.indexOf(". ", startIndex);
         text = text.substring(0, startIndex) + text.substring(endIndex + 1);
     }
     return text;
@@ -136,12 +136,7 @@ const formatByPartOfSpeech = (text) => {
   partOfSpeech.forEach((element) => {
     text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}  `);
   })
-  text = text.replace(`${linebreak}`, "");
-  text = text.replace(`${linebreak}`, "");
-  partOfSpeech.forEach((element) => {
-    let regex = `(\\(.*?)\\<br\\>\<br\\> ?(${element}) ?\\<br\\>(.*?)\\)`;
-    text = text.replace(regex, "$1$2$3");   
-  });
+  text = text.replace(`${linebreak}${linebreak}`, "");
   return text;
 }
 
@@ -168,8 +163,8 @@ const formatByHtml = (text) => {
 
 const italicizeExampleSentences = (text) => {
   while (text.includes(": ")) {
-    let indexOfColon = text.indexOf(": ");
-    let indexOfPeriod = text.indexOf(".", indexOfColon);
+    const indexOfColon = text.indexOf(": ");
+    const indexOfPeriod = text.indexOf(".", indexOfColon);
     text = text.substring(0, indexOfPeriod + 1) + "</i>" + text.substring(indexOfPeriod + 1);
     text = text.replace(": ", ":<i> ");
   }
@@ -198,12 +193,12 @@ const changeItalicizedTextColorToDarkgrey = (text) => {
 
 // hiding -----------------------------------------------------------------------------
 const hide = (word, text) => {
-  let wordRemovedY = word.substring(0, word.length - 1);
+  const wordRemovedY = word.substring(0, word.length - 1);
 
-  let startingVariations = [" ", "(", '“'];
-  let wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est"];
-  let wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
-  let endingVariations = [" ", ".", ",", ":", ";", ")", '”'];
+  const startingVariations = [" ", "(", '“'];
+  const wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est"];
+  const wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
+  const endingVariations = [" ", ".", ",", ":", ";", ")", '”'];
 
 
   if (hideWordsFromDefinition === true) {
