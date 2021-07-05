@@ -1,31 +1,26 @@
 // Options start
-let dividerBetweenWordAndDefinition = "\t";
-let endingCharacter = "\n";
-let hideWordsFromDefinition = true;
-let blank = "______"; 
-let removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
-let htmlFormatting = true; // Italicize and change color of example sentences.
-let definitionFirst = true; // Determines order between word and definition.
+const dividerBetweenWordAndDefinition = "\t";
+const endingCharacter = "\n";
+const hideWordsFromDefinition = true;
+const blank = "______"; 
+const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
+const htmlFormatting = true; // Italicize and change color of example sentences.
+const definitionFirst = true; // Determines order between word and definition.
 // Options finish
-let linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
+const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
 
 
 
-let partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
-let extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-let specialWords = ["&", "Scottish informal", "North American", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law"];
+const partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
+const extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
+const specialWords = ["&", "Scottish informal", "North American", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law"];
 
 
 function run(input, parameters) {
-  let wholeText = input[0];
-  let word = getWord(wholeText);
-  let definition = getDefinition(word, wholeText);
-  let result;
-  if (definitionFirst === true) {
-    result = `${definition}${dividerBetweenWordAndDefinition}${word}${endingCharacter}`;
-  } else {
-    result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
-  }
+  const wholeText = input[0];
+  const word = getWord(wholeText);
+  const definition = getDefinition(word, wholeText);
+  const result = getResult(word, definition);
   return result;
 }
 
@@ -33,27 +28,27 @@ function run(input, parameters) {
 
 // --------------------------------------------------------------------------------------
 // Getting word. ------------------------------------------------------------------------
-function getWord(text) {
+const getWord = (text) => {
   text = text.replaceAll("·", "");
   let word = text.split(" ")[0];
   word = removeWordException(word);
   return word;
 }
 
-function removeWordException(word) {
+const removeWordException = (word) => {
   word = remove1AfterWord(word); // If word has multiple groups of definitions (like pad), remove 1 after word.
   word = removePartOfSpeechFromWord(word); // There are some words that part of seech follows right after word.
   return word;
 }
 
-function remove1AfterWord(word) {
+const remove1AfterWord = (word) => {
   if (word.charAt(word.length - 1) == "1" || word.charAt(word.length - 1) == "2") {
     word = word.substring(0, word.length - 1);
   }
   return word;
 }
 
-function removePartOfSpeechFromWord(word) {
+const removePartOfSpeechFromWord = (word) => {
   partOfSpeech.forEach((element) => {
     word = word.replace(`${element}`, "");
   })
@@ -63,7 +58,7 @@ function removePartOfSpeechFromWord(word) {
 
 // -----------------------------------------------------------------------------------
 // Getting definition.----------------------------------------------------------------
-function getDefinition(word, text) {
+const getDefinition = (word, text) => {
   text = pruneText(text);
   text = formatText(text);
   text = hide(word, text);
@@ -72,7 +67,7 @@ function getDefinition(word, text) {
 
 
 // pruning-------------------------------------------------------------------------------
-function pruneText(text) {
+const pruneText = (text) => {
   text = removeAdditionalInformation(text);
   text = removeWordAndPronounciation(text);
   if (removingDotInformation === true) {
@@ -81,7 +76,7 @@ function pruneText(text) {
   return text;
 }
 
-function removeAdditionalInformation(text) {
+const removeAdditionalInformation = (text) => {
   extraInformation.forEach((element) => {
     if (text.includes(`${element}`)) {
       text = text.substring(0, text.indexOf(`${element}`));
@@ -90,7 +85,7 @@ function removeAdditionalInformation(text) {
   return text;
 }
 
-function removeWordAndPronounciation(text) {
+const removeWordAndPronounciation = (text) => {
   let indexs = [];
   partOfSpeech.forEach((element) => {
     if (text.includes(`${element}`)) {
@@ -106,7 +101,7 @@ function removeWordAndPronounciation(text) {
   return text;
 }
 
-function removeDotInformation(text) {
+const removeDotInformation = (text) => {
     while (text.includes("•")) {
         let startIndex = text.indexOf("•") - 1;
         let endIndex = text.indexOf(". ", startIndex);
@@ -118,7 +113,7 @@ function removeDotInformation(text) {
 
 
 // formatting--------------------------------------------------------------------------
-function formatText(text) {
+const formatText = (text) => {
   text = formatByNumbers(text);
   text = formatByPartOfSpeech(text);
   text = breakLineProperly(text);
@@ -129,7 +124,7 @@ function formatText(text) {
   return text;
 }
 
-function formatByNumbers(text) {
+const formatByNumbers = (text) => {
   for (i = 2; i < 10; i++) {
     text = text.replaceAll(` ${i} `, linebreak + `${i} `);
   }
@@ -137,7 +132,7 @@ function formatByNumbers(text) {
   return text;
 }
 
-function formatByPartOfSpeech(text) {
+const formatByPartOfSpeech = (text) => {
   partOfSpeech.forEach((element) => {
     text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}  `);
   })
@@ -150,7 +145,7 @@ function formatByPartOfSpeech(text) {
   return text;
 }
 
-function breakLineProperly(text) {
+const breakLineProperly = (text) => {
   partOfSpeech.forEach((element) => {
     let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[^\\<]*?\\)?) ?(\\[.*?\\]) `, 'g');
     text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
@@ -162,7 +157,7 @@ function breakLineProperly(text) {
   return text;
 }
 
-function formatByHtml(text) {
+const formatByHtml = (text) => {
   text = italicizeExampleSentences(text);
   text = italicizeSquareBracketWords(text);
   text = italicizeSpecialWords(text);
@@ -171,7 +166,7 @@ function formatByHtml(text) {
 }
 
 
-function italicizeExampleSentences(text) {
+const italicizeExampleSentences = (text) => {
   while (text.includes(": ")) {
     let indexOfColon = text.indexOf(": ");
     let indexOfPeriod = text.indexOf(".", indexOfColon);
@@ -181,20 +176,20 @@ function italicizeExampleSentences(text) {
   return text;
 }
 
-function italicizeSquareBracketWords(text) {
+const italicizeSquareBracketWords = (text) => {
   text = text.replaceAll("[", "<i>[");
   text = text.replaceAll("]", "]</i>");
   return text;
 }
 
-function italicizeSpecialWords(text) {
+const italicizeSpecialWords = (text) => {
   specialWords.forEach((element) => {
     text = text.replaceAll(`${element}`, `<i>${element}</i>`);
   })
   return text;
 }
 
-function changeItalicizedTextColorToDarkgrey(text) {
+const changeItalicizedTextColorToDarkgrey = (text) => {
   text = text.replaceAll('<i>', '<span style="color:darkgrey"><i>');
   text = text.replaceAll('</i>', '</i></span>');
   return text;
@@ -202,7 +197,7 @@ function changeItalicizedTextColorToDarkgrey(text) {
 
 
 // hiding -----------------------------------------------------------------------------
-function hide(word, text) {
+const hide = (word, text) => {
   let wordRemovedY = word.substring(0, word.length - 1);
 
   let startingVariations = [" ", "(", '“'];
@@ -226,4 +221,14 @@ function hide(word, text) {
     })
   }
   return text;
+}
+
+// Getting result------------------------------------------------
+const getResult = (word, definition) => {
+  if (definitionFirst === true) {
+    result = `${definition}${dividerBetweenWordAndDefinition}${word}${endingCharacter}`;
+  } else {
+    result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
+  }
+  return result;
 }
