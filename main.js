@@ -135,6 +135,8 @@ const formatByNumbers = (text) => {
 const formatByPartOfSpeech = (text) => {
   partOfSpeech.forEach((element) => {
     text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}  `);
+    let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z ]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z ]*?\\))`);
+    text = text.replace(regexForPartOfSpeechesInsideParentheses, "$1 $2 $3"); // cancel line break part of speech inside defitition like "(as adecjtive pelleted)".
   })
   text = text.replace(`${linebreak}${linebreak}`, "");
   return text;
@@ -146,8 +148,6 @@ const breakLineProperly = (text) => {
     text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
     let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([^\\<]*?\\)) `);
     text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
-    let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z ]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z ]*?\\))`);
-    text = text.replace(regexForPartOfSpeechesInsideParentheses, "$1 $2 $3");
   })
   return text;
 }
