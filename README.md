@@ -2,7 +2,7 @@
 
 **Make your English flashcard in a fast and convinient way ⚡️**
   
-This code can process plain text that *Automator "Get Definition of Word" action* retrieves from *macOS Dictionary.app New Oxford American Dictionary (English (US))*.
+This code can process plain text that *Automator "Get Definition of Word" action* retrieves from *macOS Dictionary.app Oxford Dictionary of English (English (UK))* or *New Oxford American Dictionary (English (US))*.
 
 ## What this code can do
 - Prune extra data from text.
@@ -24,7 +24,7 @@ Set Value of Variable
 Get Value of Variable (check "ignore this action's input" on the option.)  
 Run Shell Script (Write "open dict://$1" in shell script, and change Pass input to "as arguments".)  
 Get Value of Variable (check "ignore this action's input" on the option.)  
-Get Definition of Word (*New Oxford American Dictionary (Engsish (US))*)  
+Get Definition of Word (*Oxford Dictionary of English (English (UK))* or *New Oxford American Dictionary (Engsish (US))*)  
 Run Javascript (Copy and paste code of main.js to here.)  
 Set Contents of TextEdit Document  
 Save
