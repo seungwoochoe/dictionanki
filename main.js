@@ -13,7 +13,7 @@ const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines o
 
 const partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-const specialWords = ["&", "Scottish informal", "North American", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law"];
+const specialWords = ["Theology", "historical", "Philosophy", "&", "Scottish informal", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
 
 
 function run(input, parameters) {
@@ -144,10 +144,10 @@ const formatByPartOfSpeech = (text) => {
 
 const breakLineProperly = (text) => {
   partOfSpeech.forEach((element) => {
-    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[^\\<]*?\\)?) ?(\\[.*?\\]) `, 'g');
-    text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
-    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\>(\\([^\\<]*?\\)) `);
-    text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
+    let regexWithParentheses = new RegExp(`(${element})\\<br\\>(\\(?[^\\<\\d]*?\\)?) ?(\\[.*?\\]) `, 'g');
+    text = text.replace(regexWithParentheses, `$1 $2 $3${linebreak}`);
+    let regexWithoutParentheses = new RegExp(`(${element})\\<br\\>(\\([^\\<\\d]*?\\)) `);
+    text = text.replace(regexWithoutParentheses, `$1 $2${linebreak}`);
   })
   return text;
 }
@@ -194,9 +194,10 @@ const changeItalicizedTextColorToDarkgrey = (text) => {
 // hiding -----------------------------------------------------------------------------
 const hide = (word, text) => {
   const wordRemovedY = word.substring(0, word.length - 1);
+  const lastCharacter = word.substring(word.length - 1);
 
   const startingVariations = [" ", "(", '“'];
-  const wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est"];
+  const wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est", `${lastCharacter}ed`, `${lastCharacter}ing`];
   const wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
   const endingVariations = [" ", ".", ",", ":", ";", ")", '”'];
 
