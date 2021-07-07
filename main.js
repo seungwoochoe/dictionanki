@@ -144,10 +144,10 @@ const formatByPartOfSpeech = (text) => {
 
 const breakLineProperly = (text) => {
   partOfSpeech.forEach((element) => {
-    let regexWithParentheses = new RegExp(`(${element})\\<br\\>(\\(?[^\\<\\d]*?\\)?) ?(\\[.*?\\]) `, 'g');
-    text = text.replace(regexWithParentheses, `$1 $2 $3${linebreak}`);
-    let regexWithoutParentheses = new RegExp(`(${element})\\<br\\>(\\([^\\<\\d]*?\\)) `);
-    text = text.replace(regexWithoutParentheses, `$1 $2${linebreak}`);
+    let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[^\\<\\d]*?\\)?) ?(\\[.*?\\]) `, 'g');
+    text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
+    let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\> *(\\([^\\<\\d]*?\\)) `);
+    text = text.replace(regexWithoutSquareBrackets, `$1 $2${linebreak}`);
   })
   return text;
 }
