@@ -5,7 +5,7 @@
 This code can process plain text that *Automator "Get Definition of Word" action* retrieves from *macOS Dictionary.app Oxford Dictionary of English (English (UK))* or *New Oxford American Dictionary (English (US))*.
 
 ## What this code can do
-- Prune extra data from text.
+- Prune extra data like *ORIGIN* and detail definition (starting with •) from text.
 - Format (change lines by each meaning, italicize and dim example sentences) definition text to make it more readable.
 - Modify text to make it easy to import to the vocabulary flashcard services like *Anki*.
 - Hide original words from example sentences with underscores (______).
