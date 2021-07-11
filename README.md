@@ -11,7 +11,7 @@ This code can process plain text that *Automator "Get Definition of Word" action
 - Hide original words from example sentences with underscores (______).
 
 ## Example images
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="400">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="350">  
 Select a word and press shortcut you registered.
   
 ![alt text](https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/2.png)
