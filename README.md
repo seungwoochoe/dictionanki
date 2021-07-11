@@ -13,7 +13,8 @@ This code can process plain text that *Automator "Get Definition of Word" action
 ## Limitations
 - Cannot work with open compound words like *ice cream*.
 - Cannot work with phrases.
-- Cannot get second+ defititions of homonym words. (Cannot get defitition of *bat2*.)
+- Cannot get second+ definitions of homonym words. (Cannot get definition of *bat2*.)
+- Formatting is not perfect.
 
 ### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
   
