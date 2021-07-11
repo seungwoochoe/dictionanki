@@ -11,15 +11,18 @@ This code can process plain text that *Automator "Get Definition of Word" action
 - Hide original words from example sentences with underscores (______).
 
 ## Example images
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="350">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="250">  
 Select a word and press shortcut you registered.
-    
+<br/>
+<br/>
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/2.png" width="600">  
 Then processed text will be automatically written on an opened (or new) TextEdit file. You can add more word-definition sets.
-    
+<br/>
+<br/>
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="600">  
 Finally, import saved text file to the Anki. This is what it will look like after imported.
-  
+<br/>
+<br/>
 ## Limitations
 - Cannot work with open compound words like *ice cream*.
 - Cannot work with phrases.
