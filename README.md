@@ -13,11 +13,11 @@ This code can process plain text that *Automator "Get Definition of Word" action
 ## Example images
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="350">  
 Select a word and press shortcut you registered.
-  
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/2.png" width="500">  
+    
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/2.png" width="600">  
 Then processed text will be automatically written on an opened (or new) TextEdit file. You can add more word-definition sets.
-  
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="500">  
+    
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="600">  
 Finally, import saved text file to the Anki. This is what it will look like after imported.
   
 ## Limitations
