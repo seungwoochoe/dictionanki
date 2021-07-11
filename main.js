@@ -5,7 +5,7 @@ const hideWordsFromDefinition = true;
 const blank = "______"; 
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
 const htmlFormatting = true; // Italicize and change color of example sentences.
-const definitionFirst = true; // Determines order between word and definition.
+const definitionFirst = false; // Determines order between word and definition.
 // Options finish
 const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
 
@@ -13,7 +13,7 @@ const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines o
 
 const partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-const specialWords = ["Theology", "historical", "Philosophy", "&", "Scottish informal", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
+const specialWords = ["Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "informal,", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
 
 
 function run(input, parameters) {
