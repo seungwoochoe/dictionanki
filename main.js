@@ -1,11 +1,12 @@
 // Options start
 const dividerBetweenWordAndDefinition = "\t";
 const endingCharacter = "\n";
-const hideWordsFromDefinition = true;
-const blank = "______"; 
+const hidingWordsFromDefinition = true;
+const blank = "______";
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
-const htmlFormatting = true; // Italicize and change color of example sentences.
-const definitionFirst = false; // Determines order between word and definition.
+const htmlFormatting = true; // Italicize and change font color of example sentences.
+const exampleSentencesFontColor = "darkgrey"; // Put desired html color names here.
+const wordFirst = true; // Determines order between word and definition in the final result.
 // Options finish
 const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
 
@@ -36,12 +37,12 @@ const getWord = (text) => {
 }
 
 const removeWordException = (word) => {
-  word = remove1AfterWord(word); // If word has multiple groups of definitions (like pad), remove 1 after word.
+  word = removeHomonymNumberFromWord(word); // If word has multiple groups of definitions (like bat), remove 1 after word.
   word = removePartOfSpeechFromWord(word); // There are some words that part of seech follows right after word.
   return word;
 }
 
-const remove1AfterWord = (word) => {
+const removeHomonymNumberFromWord = (word) => {
   if (word.charAt(word.length - 1) == "1" || word.charAt(word.length - 1) == "2") {
     word = word.substring(0, word.length - 1);
   }
@@ -61,10 +62,11 @@ const removePartOfSpeechFromWord = (word) => {
 const getDefinition = (word, text) => {
   text = pruneText(text);
   text = formatText(text);
-  text = hide(word, text);
+  if (hidingWordsFromDefinition === true) {
+    text = hideWordsFromDefinition(word, text);
+  }
   return text;
 }
-
 
 // pruning-------------------------------------------------------------------------------
 const pruneText = (text) => {
@@ -185,15 +187,16 @@ const italicizeSpecialWords = (text) => {
 }
 
 const changeItalicizedTextColorToDarkgrey = (text) => {
-  text = text.replaceAll('<i>', '<span style="color:darkgrey"><i>');
+  text = text.replaceAll('<i>', `<span style="color:${exampleSentencesFontColor}"><i>`);
   text = text.replaceAll('</i>', '</i></span>');
   return text;
 }
 
 
+
 // hiding -----------------------------------------------------------------------------
-const hide = (word, text) => {
-  const wordRemovedY = word.substring(0, word.length - 1);
+const hideWordsFromDefinition = (word, text) => {
+  const lastCharacterRemovedWord = word.substring(0, word.length - 1);
   const lastCharacter = word.substring(word.length - 1);
 
   const startingVariations = [" ", "(", '“'];
@@ -201,30 +204,28 @@ const hide = (word, text) => {
   const wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
   const endingVariations = [" ", ".", ",", ":", ";", ")", '”'];
 
-
-  if (hideWordsFromDefinition === true) {
-    startingVariations.forEach((startingVariation) => {
-      wordForms.forEach((wordForm) => {
-        endingVariations.forEach((endingVariation) => {
-          text = text.replaceAll(`${startingVariation}${word}${wordForm}${endingVariation}`, `${startingVariation}${blank}${wordForm}${endingVariation}`);
-        })
-      })
-      wordFormsWithY.forEach((wordFormWithY) => {
-        endingVariations.forEach((endingVariation) => {
-          text = text.replaceAll(`${startingVariation}${wordRemovedY}${wordFormWithY}${endingVariation}`, `${startingVariation}${blank}${wordFormWithY}${endingVariation}`);
-        })
+  startingVariations.forEach((startingVariation) => {
+    wordForms.forEach((wordForm) => {
+      endingVariations.forEach((endingVariation) => {
+        text = text.replaceAll(`${startingVariation}${word}${wordForm}${endingVariation}`, `${startingVariation}${blank}${wordForm}${endingVariation}`);
       })
     })
-  }
+    wordFormsWithY.forEach((wordFormWithY) => {
+      endingVariations.forEach((endingVariation) => {
+        text = text.replaceAll(`${startingVariation}${lastCharacterRemovedWord}${wordFormWithY}${endingVariation}`, `${startingVariation}${blank}${wordFormWithY}${endingVariation}`);
+      })
+    })
+  })
   return text;
 }
 
-// Getting result------------------------------------------------
+// -------------------------------------------------------------------------------------------
+// Getting result-----------------------------------------------------------------------------
 const getResult = (word, definition) => {
-  if (definitionFirst === true) {
-    result = `${definition}${dividerBetweenWordAndDefinition}${word}${endingCharacter}`;
-  } else {
+  if (wordFirst === true) {
     result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
+  } else {
+    result = `${definition}${dividerBetweenWordAndDefinition}${word}${endingCharacter}`;
   }
   return result;
 }
