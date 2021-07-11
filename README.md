@@ -23,6 +23,7 @@ Then processed text will be automatically written on an opened (or new) TextEdit
 Finally, import saved text file to the Anki. This is what it will look like after imported.
 <br/>
 <br/>
+  
 ## Limitations
 - Cannot work with open compound words like *ice cream*.
 - Cannot work with phrases.
