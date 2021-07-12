@@ -42,8 +42,7 @@ Get Value of Variable (check "ignore this action's input" on the option.)
 Get Definition of Word (*Oxford Dictionary of English (English (UK))* or *New Oxford American Dictionary (Engsish (US))*)  
 Run Javascript (Copy and paste code of main.js to here.)  
 Set Contents of TextEdit Document  
+  
 Save
   
-Then assign shortcut to *Quick Action (.workflow)*. (For reference, I'm using *command-option-1*.)
-  
-When you select a specific word and press shortcut, dictionary.app search result will show up, and the result will be written in opened (or new, if there is no opened TextEdit file) TextEdit file.
+Then assign shortcut to this *Quick Action (.workflow)*.
