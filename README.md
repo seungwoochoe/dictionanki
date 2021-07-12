@@ -2,13 +2,13 @@
 
 ### ⚡️ Make your English flashcards in a fast and convinient way
   
-This code can process plain text that *Automator "Get Definition of Word" action* retrieves from *macOS Dictionary.app Oxford Dictionary of English (English (UK))* or *New Oxford American Dictionary (English (US))*.
+This code can process plain text that *Automator "Get Definition of Word" action* retrieves from (macOS Dictionary.app) *Oxford Dictionary of English* or *New Oxford American Dictionary*.
 
 ## What this can do
 - Prune extra data like *ORIGIN* and detail definition (starting with •) from definition.
-- Format (change lines by each meaning, italicize and dim example sentences) definition text with html tags.
+- Format (change lines by each meaning, italicize and dim example sentences) definition text with HTML tags.
 - Hide original words from example sentences with underscores (______), or whatever you want. 
-- Adjsut word-definition sets ready-to-be-imported to *Anki*.
+- Adjust word-definition sets ready-to-be-imported into *Anki*.
 
 ## Example
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="250">  
