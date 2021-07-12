@@ -20,7 +20,7 @@ Then processed text will be automatically written on the opened (or new) TextEdi
 <br/>
 <br/>
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="600">  
-Import saved text file to the Anki. This is what it will look like after imported.
+Import saved text file to Anki. This is what it will look like after imported.
 <br/>
 <br/>
   
@@ -29,7 +29,8 @@ Import saved text file to the Anki. This is what it will look like after importe
 - Cannot work with phrases.
 - Cannot get second+ definitions of homonym words. (Cannot get definition of *bat2*.)
 - Formatting is not perfect.
-
+<br/>
+<br/>
 ### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
   
 Automator - new Quick Action  
