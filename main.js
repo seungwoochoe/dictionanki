@@ -5,7 +5,7 @@ const hidingWordsFromDefinition = true;
 const blank = "______";
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
 const htmlFormatting = true; // Italicize and change font color of example sentences.
-const exampleSentencesFontColor = "darkgrey"; // Put desired html color names here.
+const exampleSentencesFontColor = "darkgrey"; // Put desired html color name here.
 const wordFirst = true; // Determines order between word and definition in the final result.
 // Options finish
 const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
