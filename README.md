@@ -25,6 +25,7 @@ Import saved text file to Anki. This is what cards will look like after imported
 <br/>
   
 ## Limitations
+- Cannot hide most of past and past participle forms of irregular verbs.
 - Cannot work with open compound words like *ice cream*.
 - Cannot work with phrases.
 - Cannot get second+ definitions of homonym words. (Cannot get definition of *bat2*.)
