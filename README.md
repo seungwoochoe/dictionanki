@@ -31,6 +31,7 @@ Import saved text file to Anki. This is what it will look like after imported.
 - Formatting is not perfect.
 <br/>
 <br/>
+
 ### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
   
 Automator - new Quick Action  
