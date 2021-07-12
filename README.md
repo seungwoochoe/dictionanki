@@ -1,6 +1,6 @@
 # MacOS Dictionary.app retriever
 
-#### ⚡️ Make your English flashcards in a fast and convinient way
+### ⚡️ Make your English flashcards in a fast and convinient way
   
 This code can process plain text that *Automator "Get Definition of Word" action* retrieves from *macOS Dictionary.app Oxford Dictionary of English (English (UK))* or *New Oxford American Dictionary (English (US))*.
 
@@ -20,7 +20,7 @@ Then processed text will be automatically written on the opened (or new) TextEdi
 <br/>
 <br/>
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="600">  
-Import saved text file to Anki. This is what it will look like after imported.
+Import saved text file to Anki. This is what cards will look like after imported.
 <br/>
 <br/>
   
@@ -29,7 +29,6 @@ Import saved text file to Anki. This is what it will look like after imported.
 - Cannot work with phrases.
 - Cannot get second+ definitions of homonym words. (Cannot get definition of *bat2*.)
 - Formatting is not perfect.
-<br/>
 <br/>
 
 ### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
