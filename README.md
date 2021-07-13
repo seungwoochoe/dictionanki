@@ -21,7 +21,7 @@ Then processed text will be automatically written on the opened (or new) TextEdi
 <br/>
 <br/>
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="600">  
-Import saved text file to Anki. This is what cards will look like after imported.
+Import saved text file to Anki. This is what cards will look like after being imported.
 <br/>
 <br/>
   
