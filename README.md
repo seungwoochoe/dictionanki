@@ -12,7 +12,7 @@ This code can process data that *Automator "Get Definition of Word" action* retr
 - This makes word-definition sets ready-to-be-imported into *Anki*. Just save text file and import it.
 
 ## Images
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="200">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="250">  
 Select a word and press shortcut you registered.
 <br/>
 <br/>
@@ -21,7 +21,7 @@ Then processed text will be automatically written on the opened (or new) TextEdi
 <br/>
 <br/>
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="600">  
-Import saved text file to Anki. This is what cards will look like after being imported.
+Import saved text file into Anki. This is what cards will look like after being imported.
 <br/>
 <br/>
   
