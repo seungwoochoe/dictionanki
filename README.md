@@ -33,7 +33,7 @@ Import saved text file to Anki. This is what cards will look like after being im
 - Formatting might not be perfect in a few cases.
 <br/>
 
-### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
+## Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
   
 Automator - new Quick Action  
   
