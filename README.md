@@ -1,14 +1,15 @@
-# MacOS Dictionary.app retriever
+# English Anki Flashcard Maker
 
-### ⚡️ Create your English flashcards in a fast and convinient way
+### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary in a fast and convinient way
   
-This code can process plain text that *Automator "Get Definition of Word" action* retrieves from (macOS Dictionary.app) *Oxford Dictionary of English* or *New Oxford American Dictionary*.
+This code can process data that *Automator "Get Definition of Word" action* retrieves from **Oxford Dictionary of English** or **New Oxford American Dictionary**.
 
-## What this can do
-- Prune extra data like *ORIGIN* and detail definition (starting with •) from definition.
-- Format (change lines by each meaning, italicize and dim example sentences) definition text with HTML tags.
-- Hide original words from example sentences with underscores (______), or whatever you want. 
-- Adjust word-definition sets ready-to-be-imported into *Anki*.
+## Features
+- You can use this without internet connection because this gets data from the macOS Dictionary.app.
+- This can prune extra data like *ORIGIN* and detailed definitions (starting with •).  
+- HTML formatting available (change lines by each meaning, italicize and change font color of example sentences and ect.).  
+- Hiding words from example sentences with underscores available, so that you can guess word without being exposed by answer.  
+- This makes word-definition sets ready-to-be-imported into *Anki*. Just save text file and import it.
 
 ## Example
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="250">  
@@ -29,7 +30,7 @@ Import saved text file to Anki. This is what cards will look like after imported
 - Cannot work with open compound words like *ice cream*.
 - Cannot work with phrases.
 - Cannot get second+ definitions of homonym words. (Cannot get definition of *bat2*.)
-- Formatting is not perfect.
+- Formatting might not be perfect in a few cases.
 <br/>
 
 ### Quick Action example (check *Releases* if you want use pre-made *Quick Action*)
