@@ -12,7 +12,7 @@ This code can process data that *Automator "Get Definition of Word" action* retr
 - This makes word-definition sets ready-to-be-imported into *Anki*. Just save text file and import it.
 
 ## Images
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="250">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="200">  
 Select a word and press shortcut you registered.
 <br/>
 <br/>
