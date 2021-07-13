@@ -1,6 +1,6 @@
 # English Anki Flashcard Maker
 
-### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary in a fast and convinient way
+### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary in a fast and convinient way on macOS
   
 This code can process data that *Automator "Get Definition of Word" action* retrieves from **Oxford Dictionary of English** or **New Oxford American Dictionary**.
 
@@ -11,7 +11,7 @@ This code can process data that *Automator "Get Definition of Word" action* retr
 - Hiding words from example sentences with underscores available, so that you can guess word without being exposed by answer.  
 - This makes word-definition sets ready-to-be-imported into *Anki*. Just save text file and import it.
 
-## Example
+## Images
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="250">  
 Select a word and press shortcut you registered.
 <br/>
