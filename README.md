@@ -1,11 +1,11 @@
 # English Anki Flashcard Maker
 
-### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary in a fast and convinient way on macOS
+### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary on macOS
   
 This code can process data that *Automator "Get Definition of Word" action* retrieves from **Oxford Dictionary of English** or **New Oxford American Dictionary**.
 
 ## Features
-- You can use this without internet connection because this gets data from the macOS Dictionary.app.
+- You can use this without internet connection because this retrieves data from the macOS Dictionary.app.
 - This can prune extra data like *ORIGIN* and detailed definitions (starting with •).  
 - HTML formatting available (change lines by each meaning, italicize and change font color of example sentences and ect.).  
 - Hiding words from example sentences with underscores available, so that you can guess word without being exposed by answer.  
