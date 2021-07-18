@@ -14,7 +14,7 @@ const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines o
 
 const partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-const specialWords = ["Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "informal,", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
+const specialWords = ["Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "informal,", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
 
 
 function run(input, parameters) {
