@@ -14,7 +14,7 @@ const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines o
 
 const partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-const specialWords = ["Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "informal,", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
+const specialWords = ["litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "informal,", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
 
 
 function run(input, parameters) {
@@ -71,7 +71,7 @@ const getDefinition = (word, text) => {
 // pruning-------------------------------------------------------------------------------
 const pruneText = (text) => {
 	text = removeAdditionalInformation(text);
-	text = removeWordAndPronounciation(text);
+	text = removeWordAndPronunciation(text);
 	if (removingDotInformation === true) {
 		text = removeDotInformation(text);
 	}
@@ -87,7 +87,7 @@ const removeAdditionalInformation = (text) => {
 	return text;
 }
 
-const removeWordAndPronounciation = (text) => {
+const removeWordAndPronunciation = (text) => {
 	let indexs = [];
 	partOfSpeech.forEach((element) => {
 		if (text.includes(`${element}`)) {
