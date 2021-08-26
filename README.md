@@ -37,7 +37,7 @@ Import saved text file into Anki. This is what cards will look like after being 
   
 Automator - new Quick Action  
   
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/4.png" width="600">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/4.png" width="700">  
   
 Save
   
