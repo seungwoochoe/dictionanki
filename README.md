@@ -37,14 +37,7 @@ Import saved text file into Anki. This is what cards will look like after being 
   
 Automator - new Quick Action  
   
-Get Text Input From Selection  
-Set Value of Variable  
-Get Value of Variable (check "ignore this action's input" on the option.)  
-Run Shell Script (Write "open dict://$1" in shell script, and change Pass input to "as arguments".)  
-Get Value of Variable (check "ignore this action's input" on the option.)  
-Get Definition of Word (Oxford Dictionary of English (English (UK)) or New Oxford American Dictionary (Engsish (US)))  
-Run Javascript (Copy and paste code of main.js to here.)  
-Set Contents of TextEdit Document  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/4.png" width="600">  
   
 Save
   
