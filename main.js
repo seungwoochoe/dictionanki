@@ -14,7 +14,7 @@ const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines o
 
 const partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-const specialWords = ["litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "informal,", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
+const labels = ["formal", "litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American", "Northern English", "mainly British", "British", "Logic", "Grammar", "informal", "informal,", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare"];
 
 
 function run(input, parameters) {
@@ -157,7 +157,7 @@ const breakLineProperly = (text) => {
 const formatByHtml = (text) => {
 	text = italicizeExampleSentences(text);
 	text = italicizeSquareBracketWords(text);
-	text = italicizeSpecialWords(text);
+	text = italicizelabels(text);
 	text = changeItalicizedTextColorToDarkgrey(text);
 	return text;
 }
@@ -179,8 +179,8 @@ const italicizeSquareBracketWords = (text) => {
 	return text;
 }
 
-const italicizeSpecialWords = (text) => {
-	specialWords.forEach((element) => {
+const italicizelabels = (text) => {
+	labels.forEach((element) => {
 		text = text.replaceAll(`${element}`, `<i>${element}</i>`);
 	})
 	return text;
