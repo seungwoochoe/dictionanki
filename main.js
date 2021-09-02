@@ -21,8 +21,8 @@ function run(input, parameters) {
 	const wholeText = input[0];
 	const word = getWord(wholeText);
 	const definition = getDefinition(word, wholeText);
-	const result = getResult(word, definition);
-	return result;
+
+	return getResult(word, definition);
 }
 
 
@@ -157,7 +157,7 @@ const breakLineProperly = (text) => {
 const formatByHtml = (text) => {
 	text = italicizeExampleSentences(text);
 	text = italicizeSquareBracketWords(text);
-	text = italicizelabels(text);
+	text = italicizeLabels(text);
 	text = changeItalicizedTextColorToDarkgrey(text);
 	return text;
 }
@@ -179,7 +179,7 @@ const italicizeSquareBracketWords = (text) => {
 	return text;
 }
 
-const italicizelabels = (text) => {
+const italicizeLabels = (text) => {
 	labels.forEach((element) => {
 		text = text.replaceAll(`${element}`, `<i>${element}</i>`);
 	})
