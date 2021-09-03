@@ -8,8 +8,8 @@ This code can process data that *Automator "Get Definition of Word" action* retr
 - You can use this without internet connection because this retrieves data from the macOS Dictionary.app.
 - This can prune extra data like *ORIGIN* and detailed definitions (starting with •).  
 - HTML formatting available (change lines by each meaning, italicize and change font color of example sentences and ect.).  
-- Hiding words from example sentences with underscores available, so that you can guess word without being exposed by answer.  
-- This makes word-definition sets ready-to-be-imported into *Anki*. Just save text file and import it.
+- This can replace words from example sentences with underscores (______). 
+- This makes word-definition sets ready to be imported into Anki. Just save text file and import it.
 
 ## Images
 <img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/1.png" width="250">  
@@ -27,13 +27,13 @@ Import saved text file into Anki. This is what cards will look like after being 
   
 ## Limitations
 - Cannot hide most of past and past participle forms of irregular verbs.
-- Cannot be used with open compound words like *ice cream*.
-- Cannot be used with phrases.
+- Cannot process open compound words like *ice cream*.
+- Cannot be used for retriving phrases and phrasal verbs information.
 - Cannot get second+ definitions of homonym words. (Cannot get definition of *bat2*.)
-- Formatting might not be perfect in a few cases.
+- Formatting is not perfect in a few cases.
 <br/>
 
-## Quick Action example (check *Releases* if you want to use pre-made Quick Action)
+## Quick Action example (check [Releases](https://github.com/SeungwooChoe/English-Anki-flashcard-maker/releases) if you want to use pre-made Quick Action)
   
 Automator - new Quick Action  
   
