@@ -33,7 +33,7 @@ Import saved text file into Anki. This is what cards will look like after being 
 - Formatting is not perfect in a few cases.
 <br/>
 
-## Quick Action example (check [Releases](https://github.com/SeungwooChoe/English-Anki-flashcard-maker/releases) if you want to use pre-made Quick Action)
+## Quick Action example (check *[Releases](https://github.com/SeungwooChoe/English-Anki-flashcard-maker/releases)* if you want to use pre-made Quick Action)
   
 Automator - new Quick Action  
   
@@ -42,3 +42,6 @@ Automator - new Quick Action
 Save
   
 Then assign shortcut to this Quick Action (.workflow).
+  
+## Usage tip
+Run Quick Action after opening a TextEdit file and minimizing it to dock. Then it will not pop up every time you run Quick Action.
