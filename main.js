@@ -199,10 +199,10 @@ const hideWordsFromDefinition = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
 	const lastCharacter = word.substring(word.length - 1);
 
-	const startingVariations = [" ", "(", '“'];
+	const startingVariations = [" ", "(", '“', '-'];
 	const wordForms = ["", "d", "ed", "s", "es", "ing", "er", "est", `${lastCharacter}ed`, `${lastCharacter}ing`];
 	const wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
-	const endingVariations = [" ", ".", ",", ":", ";", ")", '”'];
+	const endingVariations = [" ", ".", ",", ":", ";", ")", '”', '-'];
 
 	startingVariations.forEach((startingVariation) => {
 		wordForms.forEach((wordForm) => {
