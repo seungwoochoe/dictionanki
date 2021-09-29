@@ -9,7 +9,7 @@ This code can process plain texts that *Automator "Get Definition of Word" actio
 - This makes word-definition sets ready to be imported into Anki. Just save created text and import it.
 - There are several options that you can choose from. Check out the options in main.js.
 - You can prune extra information like *ORIGIN* of the word and more specific definitions that are starting with "•".
-- You can italicize and change font color of labels (*[with object], archaic, mainly British, North American, Biology*, ect.) and example sentences.  
+- You can italicize and change font color of labels (e.g. *[with object], archaic, mainly British, North American, Biology*, ect.) and example sentences.  
 - You can replace words from the example sentences with underscores (______).
 
 
