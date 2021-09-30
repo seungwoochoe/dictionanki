@@ -1,4 +1,4 @@
-# English Anki Flashcard Maker
+# macOS Dictionary.app retriever for Anki
 
 ### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary on macOS
   
