@@ -18,11 +18,11 @@ This code can process plain texts that *Automator "Get Definition of Word" actio
 Select a word and press a shortcut you registered.
 <br/>
 <br/>
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/2.png" width="600">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/2.png" width="650">  
 Then a processed text will be automatically written on an opened (or new) text file. You can add more word-definition sets.
 <br/>
 <br/>
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="600">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/3.png" width="650">  
 Import the saved text file into Anki. This is what cards will look like after being imported.
 <br/>
 <br/>
@@ -39,7 +39,7 @@ Import the saved text file into Anki. This is what cards will look like after be
   
 Automator - new Quick Action  
   
-<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/4.png" width="700">  
+<img src="https://github.com/SeungwooChoe/macOS-system-dictionary-retriever/blob/main/images/4.png" width="750">  
   
 Save
   
