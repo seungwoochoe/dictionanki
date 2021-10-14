@@ -46,4 +46,4 @@ Save
 Then assign a shortcut to this Quick Action (.workflow).
   
 ## Usage tip
-Run Quick Action after opening a TextEdit file and minimizing it to the dock. Then it will not pop up every time you run Quick Action.
+Run Quick Action after opening a TextEdit file and hiding or minimizing it to the dock. Then it will not pop up every time you run Quick Action.
