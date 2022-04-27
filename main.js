@@ -1,23 +1,23 @@
 // Options start
-const dividerBetweenWordAndDefinition = "\t";
+const separatorBetweenWordAndDefinition = "\t";
 const endingCharacter = "\n";
 const hidingWordsFromDefinition = true;
 const blank = "______";
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
 const htmlFormatting = true; // Italicize and change font color of example sentences.
 const exampleSentencesFontColor = "darkgrey"; // Put desired html color name here.
-const wordFirst = true; // Determines order between word and definition in the final result.
+const wordFirst = true; // Determines the order between word and definition in the final result.
 // Options end
 
-const linebreak = "<br>"; // Depricated Option. Adjust linebreak between lines of definition. Choose between "<br>" and "\n"
+const linebreak = "<br>"; // Depricated Option. (Adjust linebreak between lines of definition. Choose between "<br>" and "\n")
 
 
 
-const partOfSpeech = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
-const extraInformation = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
+const partOfSpeechTags = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
+const extraInformationTags = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
 const labels = ["Microbiology", "Biology", "technical", "litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American,", "North American", "Northern English", "mainly British", "British", "Scottish,", "Scottish", "Logic", "Grammar", "informal,", "informal", "formal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare", "Architecture", "Electronics", "Military", "Photography", "Geometry"];
 // Label order e.g.: put "informal" before "formal".
-
+// Linguistics -----------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function run(input, parameters) {
 	const wholeText = input[0];
 	const word = getWord(wholeText);
@@ -51,7 +51,7 @@ const removeHomonymNumberFromWord = (word) => {
 }
 
 const removePartOfSpeechFromWord = (word) => {
-	partOfSpeech.forEach((element) => {
+	partOfSpeechTags.forEach((element) => {
 		word = word.replace(`${element}`, "");
 	})
 	return word;
@@ -80,7 +80,7 @@ const pruneText = (text) => {
 }
 
 const removeAdditionalInformation = (text) => {
-	extraInformation.forEach((element) => {
+	extraInformationTags.forEach((element) => {
 		if (text.includes(`${element}`)) {
 			text = text.substring(0, text.indexOf(`${element}`));
 		}
@@ -90,7 +90,7 @@ const removeAdditionalInformation = (text) => {
 
 const removeWordAndPronunciation = (text) => {
 	let indexs = [];
-	partOfSpeech.forEach((element) => {
+	partOfSpeechTags.forEach((element) => {
 		if (text.includes(`${element}`)) {
 			indexs.push(text.indexOf(`${element}`));
 		}
@@ -137,7 +137,7 @@ const formatByNumbers = (text) => {
 }
 
 const formatByPartOfSpeech = (text) => {
-	partOfSpeech.forEach((element) => {
+	partOfSpeechTags.forEach((element) => {
 		text = text.replace(`${element} `, `${linebreak.repeat(2)}${element}${linebreak}  `);
 		let regexForPartOfSpeechesInsideParentheses = new RegExp(`(\\([a-z ]*?)\\<br\\>\\<br\\>(${element})\\<br\\>([a-z ]*?\\))`);
 		text = text.replace(regexForPartOfSpeechesInsideParentheses, "$1 $2 $3"); // cancel line break part of speech inside defitition like "(as adecjtive pelleted)".
@@ -147,7 +147,7 @@ const formatByPartOfSpeech = (text) => {
 }
 
 const breakLineProperly = (text) => {
-	partOfSpeech.forEach((element) => {
+	partOfSpeechTags.forEach((element) => {
 		let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[^\\<\\d]*?\\)?) ?(\\[.*?\\]) `, 'g');
 		text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
 		let regexWithoutSquareBrackets = new RegExp(`(${element})\\<br\\> *(\\([^\\<\\d]*?\\)) `);
@@ -207,7 +207,7 @@ const hideWordsFromDefinition = (word, text) => {
 
 	const startingVariations = [" ", "(", '“', '-', '—'];
 	const wordForms = ["", "d", "ed", "s", "es", "ing", "r", "er", "st", "est", `${lastCharacter}ed`, `${lastCharacter}ing`];
-	const wordFormsWithY = ["ing", "ied", "ies", "ier", "iest"];
+	const wordFormsForWordsEndingWithY = ["ing", "ied", "ies", "ier", "iest"];
 	const endingVariations = [" ", ".", ",", ":", ";", ")", '”', '-', '—'];
 
 	startingVariations.forEach((startingVariation) => {
@@ -216,7 +216,7 @@ const hideWordsFromDefinition = (word, text) => {
 				text = text.replaceAll(`${startingVariation}${word}${wordForm}${endingVariation}`, `${startingVariation}${blank}${wordForm}${endingVariation}`);
 			})
 		})
-		wordFormsWithY.forEach((wordFormWithY) => {
+		wordFormsForWordsEndingWithY.forEach((wordFormWithY) => {
 			endingVariations.forEach((endingVariation) => {
 				text = text.replaceAll(`${startingVariation}${lastCharacterRemovedWord}${wordFormWithY}${endingVariation}`, `${startingVariation}${blank}${wordFormWithY}${endingVariation}`);
 			})
@@ -229,9 +229,9 @@ const hideWordsFromDefinition = (word, text) => {
 // Getting result-----------------------------------------------------------------------------
 const getResult = (word, definition) => {
 	if (wordFirst === true) {
-		result = `${word}${dividerBetweenWordAndDefinition}${definition}${endingCharacter}`;
+		result = `${word}${separatorBetweenWordAndDefinition}${definition}${endingCharacter}`;
 	} else {
-		result = `${definition}${dividerBetweenWordAndDefinition}${word}${endingCharacter}`;
+		result = `${definition}${separatorBetweenWordAndDefinition}${word}${endingCharacter}`;
 	}
 	return result;
 }
