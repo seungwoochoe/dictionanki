@@ -4,6 +4,7 @@ const endingCharacter = "\n";
 const hidingWordsFromDefinition = true;
 const blank = "______";
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
+const removingComparativeAndSuperlativeInformation = true;
 const htmlFormatting = true; // Italicize and change font color of example sentences.
 const exampleSentencesFontColor = "darkgrey"; // Put desired html color name here.
 const wordFirst = true; // Determines the order between word and definition in the final result.
@@ -61,7 +62,7 @@ const removePartOfSpeechFromWord = (word) => {
 // -----------------------------------------------------------------------------------
 // Getting definition.----------------------------------------------------------------
 const getDefinition = (word, text) => {
-	text = pruneText(text);
+	text = pruneText(word, text);
 	text = formatText(text);
 	if (hidingWordsFromDefinition === true) {
 		text = hideWordsFromDefinition(word, text);
@@ -70,11 +71,14 @@ const getDefinition = (word, text) => {
 }
 
 // pruning-------------------------------------------------------------------------------
-const pruneText = (text) => {
+const pruneText = (word, text) => {
 	text = removeAdditionalInformation(text);
 	text = removeWordAndPronunciation(text);
 	if (removingDotInformation === true) {
 		text = removeDotInformation(text);
+	}
+	if (removingComparativeAndSuperlativeInformation === true) {
+		text = removeComparativeAndSuperlativeInformation(word, text);
 	}
 	return text;
 }
@@ -111,6 +115,15 @@ const removeDotInformation = (text) => {
 				text = text.substring(0, startIndex) + text.substring(endIndex + 1);
 		}
 		return text;
+}
+
+const removeComparativeAndSuperlativeInformation = (word, text) => {
+	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
+	const target1 = " (" + word + "er, " + word + "est)"
+	const target2 = " (" + lastCharacterRemovedWord + "ier, " + lastCharacterRemovedWord + "iest)"
+	text = text.replace(target1, "")
+	text = text.replace(target2, "")
+	return text;
 }
 
 
