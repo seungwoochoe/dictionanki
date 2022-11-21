@@ -5,6 +5,7 @@ const hidingWordsFromDefinition = true;
 const blank = "______";
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
 const removingComparativeAndSuperlativeInformation = true;
+const removingPluralFormInformation = true;
 const htmlFormatting = true; // Italicize and change font color of example sentences.
 const exampleSentencesFontColor = "darkgrey"; // Put desired html color name here.
 const wordFirst = true; // Determines the order between word and definition in the final result.
@@ -80,6 +81,9 @@ const pruneText = (word, text) => {
 	if (removingComparativeAndSuperlativeInformation === true) {
 		text = removeComparativeAndSuperlativeInformation(word, text);
 	}
+	if (removingPluralFormInformation === true) {
+		text = removePluralFormInformation(word, text);
+	}
 	return text;
 }
 
@@ -124,6 +128,12 @@ const removeComparativeAndSuperlativeInformation = (word, text) => {
 	text = text.replace(target1, "")
 	text = text.replace(target2, "")
 	return text;
+}
+
+const removePluralFormInformation = (word, text) => {
+	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
+	const target = " (plural " + lastCharacterRemovedWord + "ies)"
+	return text.replace(target, "")
 }
 
 
