@@ -123,10 +123,12 @@ const removeDotInformation = (text) => {
 
 const removeComparativeAndSuperlativeInformation = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
-	const target1 = " (" + word + "er, " + word + "est)"
-	const target2 = " (" + lastCharacterRemovedWord + "ier, " + lastCharacterRemovedWord + "iest)"
+	const target1 = " (" + word + "r, " + word + "st)"
+	const target2 = " (" + word + "er, " + word + "est)"
+	const target3 = " (" + lastCharacterRemovedWord + "ier, " + lastCharacterRemovedWord + "iest)"
 	text = text.replace(target1, "")
 	text = text.replace(target2, "")
+	text = text.replace(target3, "")
 	return text;
 }
 
