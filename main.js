@@ -4,7 +4,8 @@ const endingCharacter = "\n";
 const hidingWordsFromDefinition = true;
 const blank = "______";
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
-const removingComparativeAndSuperlativeInformation = true;
+const removingRegularVerbConjugationFormsInformation = true;
+const removingComparativeAndSuperlativeFormsInformation = true;
 const removingPluralFormInformation = true;
 const htmlFormatting = true; // Italicize and change font color of example sentences.
 const exampleSentencesFontColor = "darkgrey"; // Put desired html color name here.
@@ -78,8 +79,11 @@ const pruneText = (word, text) => {
 	if (removingDotInformation === true) {
 		text = removeDotInformation(text);
 	}
-	if (removingComparativeAndSuperlativeInformation === true) {
-		text = removeComparativeAndSuperlativeInformation(word, text);
+	if (removingRegularVerbConjugationFormsInformation === true) {
+		text = removeRegularVerbConjugationFormsInformation(word, text)
+	} 
+	if (removingComparativeAndSuperlativeFormsInformation === true) {
+		text = removeComparativeAndSuperlativeFormsInformation(word, text);
 	}
 	if (removingPluralFormInformation === true) {
 		text = removePluralFormInformation(word, text);
@@ -121,7 +125,14 @@ const removeDotInformation = (text) => {
 		return text;
 }
 
-const removeComparativeAndSuperlativeInformation = (word, text) => {
+const removeRegularVerbConjugationFormsInformation = (word, text) => {
+	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
+	const target = " (" + lastCharacterRemovedWord + "ies, " + word + "ing, " + lastCharacterRemovedWord + "ied)"
+	text = text.replace(target, "")
+	return text
+}
+
+const removeComparativeAndSuperlativeFormsInformation = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
 	const target1 = " (" + word + "r, " + word + "st)"
 	const target2 = " (" + word + "er, " + word + "est)"
