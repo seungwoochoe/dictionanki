@@ -14,12 +14,13 @@ This code can process plain texts that *Automator "Get Definition of Word" actio
 
 
 ## How to use
-<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.jpg" width="400">  
+<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.jpg" width="320">  
+
 After the [setup](https://github.com/seungwoochoe/dictionanki#Setup), right click on a word that you want to put into Anki and then select Dictionanki.
 (You can also assign a shortcut for Dictionanki in macOS System Preferences.)
 <br/>
 <br/>
-<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="650">  
+<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="550">  
 Then a processed text will be automatically written on an opened (or new) text file. You can add more word-definition sets. To prevent TextEdit popping up every time, you can minimize (⌘M) the txt file.
 <br/>
 <br/>
