@@ -11,16 +11,16 @@ This code can process plain texts that *Automator "Get Definition of Word" actio
 - You can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information,  *ORIGIN* part, more specific definitions that are starting with "•".
 - You can italicize and change font color of labels—*[with object], archaic, mainly British, North American, Biology, etc.— and example sentences.
 - You can replace words from example sentences with underscores (______).
-
+<br/>
 
 ## How to use
-<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.jpg" width="320">  
+<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.jpg" width="350">  
 
 After the [setup](https://github.com/seungwoochoe/dictionanki#Setup), right click on a word that you want to put into Anki and then select Dictionanki.
 (You can also assign a shortcut for Dictionanki in macOS System Preferences.)
 <br/>
 <br/>
-<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="550">  
+<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="400">  
 Then a processed text will be automatically written on an opened (or new) text file. You can add more word-definition sets. To prevent TextEdit popping up every time, you can minimize (⌘M) the txt file.
 <br/>
 <br/>
@@ -35,6 +35,7 @@ Download Dictionanki.workflow.zip on [Releases](https://github.com/seungwoochoe/
 If you want to configure the options, open up the workflow located in "~/Library (hidden folder, press cmd+shift+dot to reveal)/Services" and modify options under Run JavaScript action. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
 
 In case you want to create Quick Action by yourself, you can reference [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
+<br/>
 
 ## Limitations
 - Cannot hide most of past and past participle forms of irregular verbs.
