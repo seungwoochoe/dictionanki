@@ -7,15 +7,16 @@ This code can process plain texts that *Automator "Get Definition of Word" actio
 ## Features
 - No internet connection is needed.
 - This code makes word-definition sets ready to be imported into Anki. You just need to import the created text file.
-- There are several options that you can choose from. Check out the options in [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js)'s first several lines.
-- You can prune extra information like *ORIGIN* of the word and more specific definitions that are starting with "•".
-- You can italicize and change font color of labels (e.g. *[with object], archaic, mainly British, North American, Biology*) and example sentences.
-- You can replace words from the example sentences with underscores (______).
+- There are several options that you can choose from. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+- You can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information,  *ORIGIN* part, more specific definitions that are starting with "•".
+- You can italicize and change font color of labels—*[with object], archaic, mainly British, North American, Biology, etc.— and example sentences.
+- You can replace words from example sentences with underscores (______).
 
 
 ## Images
 <img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.png" width="250">  
-Select a word and press a shortcut you registered.
+Right click on a word that you want to put into Anki and then select Dictionanki.
+You can also assign a shortcut for Dictionanki in macOS System Preferences.
 <br/>
 <br/>
 <img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="650">  
