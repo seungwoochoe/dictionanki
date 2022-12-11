@@ -8,8 +8,8 @@ This code can process plain texts that *Automator "Get Definition of Word" actio
 - No internet connection is needed.
 - This code makes word-definition sets ready to be imported into Anki. You just need to import the created text file.
 - There are several options that you can choose from. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
-- You can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information,  *ORIGIN* part, more specific definitions that are starting with "•".
-- You can italicize and change font color of labels—*[with object], archaic, mainly British, North American, Biology, etc.— and example sentences.
+- You can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information,  *ORIGIN* part, and more specific definitions that are starting with "•".
+- You can italicize and change font color of labels—*[with object], archaic, mainly British, North American, Biology*, ...— and example sentences.
 - You can replace words from example sentences with underscores (______).
 <br/>
 
@@ -20,21 +20,22 @@ After the [setup](https://github.com/seungwoochoe/dictionanki#Setup), right clic
 (You can also assign a shortcut for Dictionanki in macOS System Preferences.)
 <br/>
 <br/>
-<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="400">  
-Then a processed text will be automatically written on an opened (or new) text file. You can add more word-definition sets. To prevent TextEdit popping up every time, you can minimize (⌘M) the txt file.
+<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="550">  
+Then a processed text will be automatically written on an opened (or new) text file. You can add more word-definition sets. To prevent TextEdit popping up every time, you can minimize (⌘M) the TextEdit window.
 <br/>
 <br/>
-<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/3-1.png" width="650">  
+<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/3-1.png" width="550">  
 Save the text file and import it into Anki. This is what cards will look like after being imported.
 <br/>
 <br/>
 
 ## Setup
-Download Dictionanki.workflow.zip on [Releases](https://github.com/seungwoochoe/dictionanki/releases), decompress it, and install the workflow by double clicking it.
+Download Dictionanki.workflow.zip on [Releases](https://github.com/seungwoochoe/dictionanki/releases) and install the workflow by double clicking it.
 
 If you want to configure the options, open up the workflow located in "~/Library (hidden folder, press cmd+shift+dot to reveal)/Services" and modify options under Run JavaScript action. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
 
 In case you want to create Quick Action by yourself, you can reference [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
+
 <br/>
 
 ## Limitations
