@@ -14,7 +14,7 @@ This code can process plain texts that *Automator "Get Definition of Word" actio
 
 
 ## Images
-<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.png" width="250">  
+<img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.jpg" width="250">  
 Right click on a word that you want to put into Anki and then select Dictionanki.
 You can also assign a shortcut for Dictionanki in macOS System Preferences.
 <br/>
