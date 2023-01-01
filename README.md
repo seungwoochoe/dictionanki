@@ -1,16 +1,14 @@
 # Dictionanki
 
 ### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary on macOS
-  
-This code can process plain texts that *Automator "Get Definition of Word" action* retrieves from **Oxford Dictionary of English** or **New Oxford American Dictionary**.
 
 ## Features
 - No internet connection is needed.
 - This code makes word-definition sets ready to be imported into Anki. You just need to import the created text file.
-- There are several options that you can choose from. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
-- You can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information,  *ORIGIN* part, and more specific definitions that are starting with "•".
-- You can italicize and change the font color of labels—*[with object], archaic, mainly British, North American, Biology*, ...—and example sentences.
-- You can replace words from example sentences with underscores (______).
+- Configure as you'd like to. Check out the options in the first lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+- Prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
+- Italicize and change the font color of labels—*[with object], archaic, mainly British, North American, Biology*, ...—and example sentences.
+- Replace words from example sentences with underscores (______).
 <br/>
 
 ## How to use
