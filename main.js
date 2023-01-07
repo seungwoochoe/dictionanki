@@ -12,7 +12,7 @@ const exampleSentencesFontColor = "darkgrey"; // Put desired html color name her
 const wordFirst = true; // Determines the order between word and definition in the final result.
 // Options end
 
-const linebreak = "<br>"; // Deprecated Option. (Adjust linebreak between lines of definition. Choose between "<br>" and "\n")
+const linebreak = "<br>"; // Deprecated Option. You may use this option to use Dictionanki with different flashcard apps, for example, Quizlet. (Adjust linebreak between lines of definition. Choose between "<br>" and "\n")
 
 
 
