@@ -30,7 +30,7 @@ Save the text file and import it into Anki. This is what cards will look like af
 ## Setup
 Download *Dictionanki.workflow.zip* from [Releases](https://github.com/seungwoochoe/dictionanki/releases) and install the workflow by double clicking it. And voilà, you're done!
 
-Optionally, you can configure options by opening the workflow located in "~/Library (hidden folder, press cmd+shift+dot to reveal)/Services" and modifying the JavaScript inside. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js) for available options.
+Optionally, you can configure options by opening the workflow located in "~/Library (hidden folder, press cmd+shift+dot to reveal)/Services" and modifying the JavaScript inside. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js) to see the available options.
 
 In case you want to create Quick Action by yourself, you can see the [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
 
