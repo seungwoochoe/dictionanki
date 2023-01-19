@@ -1,11 +1,11 @@
 # Dictionanki
 
-### ⚡️ Create your English-English Anki flashcards from Oxford Dictionary on macOS
+### ⚡️ Create your English Anki flashcards from macOS system Oxford Dictionary
 
 ## Features
 - No internet connection is needed.
-- This code makes word-definition sets ready to be imported into Anki. You just need to import the created text file.
-- Configure as you'd like to. Check out the options in the first lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+- Dictionanki makes word-definition sets ready to be imported into Anki. You just need to import a created text file.
+- Configure as you'd like to. Check out the options in the first few lines in [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
 - Prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
 - Italicize and change the font color of labels—*[with object], archaic, mainly British, North American, Biology*, ...—and example sentences.
 - Replace words from example sentences with underscores (______).
@@ -30,9 +30,9 @@ Save the text file and import it into Anki. This is what cards will look like af
 ## Setup
 Download *Dictionanki.workflow.zip* from [Releases](https://github.com/seungwoochoe/dictionanki/releases) and install the workflow by double clicking it. And voilà, you're done!
 
-Optionally, you can configure options by opening up the workflow located in "~/Library (hidden folder, press cmd+shift+dot to reveal)/Services" and modifying JavaScript inside. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+Optionally, you can configure options by opening the workflow located in "~/Library (hidden folder, press cmd+shift+dot to reveal)/Services" and modifying the JavaScript inside. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js) for available options.
 
-In case you want to create Quick Action by yourself, you can reference the [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
+In case you want to create Quick Action by yourself, you can see the [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
 
 <br/>
 
