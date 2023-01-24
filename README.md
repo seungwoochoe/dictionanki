@@ -6,8 +6,8 @@
 ## Features
 - No internet connection is needed.
 - Replace words from example sentences with underscores (______).
-- Optionally prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
 - Italicize and dim example sentences and labels (*[with object], archaic, mainly British, North American, Biology*, ...).
+- Optionally prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
 - Configure as you'd like to. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
 
 <br/>
