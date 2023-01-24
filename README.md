@@ -1,14 +1,16 @@
 # Dictionanki
 
 ### ⚡️ Create your English Anki flashcards from macOS system Oxford Dictionary
+<br>
 
 ## Features
 - No internet connection is needed.
 - Dictionanki makes word-definition sets ready to be imported into Anki. You just need to import a created text file.
-- Configure as you'd like to. Check out the options in the first few lines in [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
-- Prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
-- Italicize and change the font color of labels—*[with object], archaic, mainly British, North American, Biology*, ...—and example sentences.
 - Replace words from example sentences with underscores (______).
+- Optionally prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
+- Italicize and dim example sentences and labels (*[with object], archaic, mainly British, North American, Biology*, ...).
+- Configure as you'd like to. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+
 <br/>
 
 ## How to use
