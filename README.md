@@ -35,7 +35,7 @@ And voilà, you're done!
 
 Optionally, you can configure options by opening the workflow located in "~/Library (hidden folder, press ⌘+⇧+. to reveal)/Services" and modifying the JavaScript inside. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js) to see the available options.
 
-In case you want to create Quick Action by yourself, you can see the [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
+If you'd like to create a Quick Action by yourself, you can see the [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
 
 <br/>
 
