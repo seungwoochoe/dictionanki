@@ -18,7 +18,7 @@ const linebreak = "<br>"; // Deprecated Option. You may use this option to use D
 
 const partOfSpeechTags = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformationTags = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-const labels = ["mainly US", "Music", "Medicine", "Linguistics", "Microbiology", "Biology", "technical", "litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American,", "North American", "Northern English", "mainly British", "British", "Scottish,", "Scottish", "Logic", "Grammar", "informal,", "informal", "formal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare", "Architecture", "Electronics", "Military", "Photography", "Geometry"];
+const labels = ["mainly US", "Music", "Medicine", "Linguistics", "Microbiology", "Biology", "technical", "litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American,", "North American", "Northern English", "mainly British", "British", "Scottish,", "Scottish", "Logic", "Grammar", "informal,", "informal", "formal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare", "Architecture", "Electronics", "Military", "Photography", "Geometry", "Psychoanalysis"];
 // The order of 'labels' example: put "mainly US" before "US" and "informal" before "formal".
 
 function run(input, parameters) {
