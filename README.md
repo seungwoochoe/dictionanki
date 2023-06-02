@@ -4,8 +4,8 @@
 <br>
 
 ## Features
-- Works without internet connection. Thus, there is no limit on how many times you can retrieve definitions, for example, per day.
-- Can hide words from example sentences. Useful when you want to guess a word from a definition.
+- Works without internet connection.
+- Can hide words from example sentences. Useful when you want to guess words from their definitions.
 - Can italicize and dim example sentences and labels (*[with object], archaic, mainly British, North American, Biology*, ...).
 - Can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
 - Configure as you'd like to. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
