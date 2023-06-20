@@ -1,32 +1,33 @@
-// Options start
+// Options start.
 const separatorBetweenWordAndDefinition = "\t";
-const endingCharacter = "\n";
+const separatorBetweenResults = "\n";
 const hidingWordsFromDefinition = true;
 const blank = "______";
 const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
-const removingRegularVerbConjugationFormsInformation = true;
-const removingComparativeAndSuperlativeFormsInformation = true;
-const removingPluralFormInformation = true;
+const removingRegularVerbConjugationFormsInfo = true;
+const removingComparativeAndSuperlativeFormsInfo = true;
+const removingPluralFormInfo = true;
 const htmlFormatting = true; // Italicize and change font color of example sentences.
 const exampleSentencesFontColor = "darkgrey"; // Put desired html color name here.
 const wordFirst = true; // Determines the order between word and definition in the final result.
-// Options end
+// Options end.
 
-const linebreak = "<br>"; // Deprecated Option. You may use this option to use Dictionanki with different flashcard apps, for example, Quizlet. (Adjust linebreak between lines of definition. Choose between "<br>" and "\n")
+const linebreak = "<br>"; // Deprecated option. (You may use this option to use Dictionanki with different flashcard apps, for example, Quizlet. (Adjust linebreak between lines of definition. Choose between "<br>" and "\n"))
 
 
 
 const partOfSpeechTags = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformationTags = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
-const labels = ["mainly US", "Music", "Medicine", "Linguistics", "Microbiology", "Biology", "technical", "litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American,", "North American", "Northern English", "mainly British", "British", "Scottish,", "Scottish", "Logic", "Grammar", "informal,", "informal", "formal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare", "Architecture", "Electronics", "Military", "Photography", "Geometry", "Psychoanalysis", "Botany"];
-// The order of 'labels' example: put "mainly US" before "US" and "informal" before "formal".
+const labels = ["mainly US", "Music", "Medicine", "Linguistics", "Microbiology", "Biology", "technical", "litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American,", "North American", "Northern English", "mainly British", "British", "Scottish,", "Scottish", "Logic", "Grammar", "informal,", "informal", "formal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare", "Architecture", "Electronics", "Military", "Photography", "Geometry", "Psychoanalysis", "Botany", "or dialect", "dialect"];
+// The order of `labels` example: "informal" should precede "formal".
+
 
 function run(input, parameters) {
-	const wholeText = input[0];
-	const word = getWord(wholeText);
-	const definition = getDefinition(word, wholeText);
+	const rawText = input[0];
+	const word = getWord(rawText);
+	const definition = getDefinition(word, rawText);
 
-	return getResult(word, definition);
+	return produceResult(word, definition);
 }
 
 
@@ -79,13 +80,13 @@ const pruneText = (word, text) => {
 	if (removingDotInformation === true) {
 		text = removeDotInformation(text);
 	}
-	if (removingRegularVerbConjugationFormsInformation === true) {
+	if (removingRegularVerbConjugationFormsInfo === true) {
 		text = removeRegularVerbConjugationFormsInformation(word, text)
 	} 
-	if (removingComparativeAndSuperlativeFormsInformation === true) {
+	if (removingComparativeAndSuperlativeFormsInfo === true) {
 		text = removeComparativeAndSuperlativeFormsInformation(word, text);
 	}
-	if (removingPluralFormInformation === true) {
+	if (removingPluralFormInfo === true) {
 		text = removePluralFormInformation(word, text);
 	}
 	return text;
@@ -263,11 +264,11 @@ const hideWordsFromDefinition = (word, text) => {
 
 // -------------------------------------------------------------------------------------------
 // Getting result-----------------------------------------------------------------------------
-const getResult = (word, definition) => {
+const produceResult = (word, definition) => {
 	if (wordFirst === true) {
-		result = `${word}${separatorBetweenWordAndDefinition}${definition}${endingCharacter}`;
+		result = `${word}${separatorBetweenWordAndDefinition}${definition}${separatorBetweenResults}`;
 	} else {
-		result = `${definition}${separatorBetweenWordAndDefinition}${word}${endingCharacter}`;
+		result = `${definition}${separatorBetweenWordAndDefinition}${word}${separatorBetweenResults}`;
 	}
 	return result;
 }
