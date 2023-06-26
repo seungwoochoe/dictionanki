@@ -1,15 +1,15 @@
 // Options start.
 const separatorBetweenWordAndDefinition = "\t";
 const separatorBetweenResults = "\n";
-const hidingWordsFromDefinition = true;
+const hideWordsInExampleSentences = true;
 const blank = "______";
-const removingDotInformation = true; // Dot information: definitions starting with "•" symbol in dictionary.
-const removingRegularVerbConjugationFormsInfo = true;
-const removingComparativeAndSuperlativeFormsInfo = true;
-const removingPluralFormInfo = true;
-const htmlFormatting = true; // Italicize and change font color of example sentences.
-const exampleSentencesFontColor = "darkgrey"; // Put desired html color name here.
-const wordFirst = true; // Determines the order between word and definition in the final result.
+const includeDotDefinitions = false; // Dot definitions: definitions starting with "•".
+const includeRegularVerbConjugationFormsInfo = false;
+const includeComparativeAndSuperlativeFormsInfo = false;
+const includePluralFormInfo = false;
+const useHtmlFormatting = true;
+const fontColorForExampleSentences = "darkgrey"; // More color names: https://htmlcolorcodes.com/color-names/
+const wordsComeFirst = true; // Determines the order between word and definition in the final result.
 // Options end.
 
 const linebreak = "<br>"; // Deprecated option. (You may use this option to use Dictionanki with different flashcard apps, for example, Quizlet. (Adjust linebreak between lines of definition. Choose between "<br>" and "\n"))
@@ -36,7 +36,7 @@ function run(input, parameters) {
 // Getting word. ------------------------------------------------------------------------
 const getWord = (text) => {
 	text = text.replaceAll("·", "");
-	text = text.split(" ")[0];
+	text = text.split(" ")[0]; // Cannot use `|` because some words' pronunciations depend on how they are used, and pronunciation info can come after part of speech tags. (e.g. articulate)
 	text = removeWordException(text);
 	return text;
 }
@@ -49,7 +49,7 @@ const removeWordException = (word) => {
 
 const removeHomonymNumberFromWord = (word) => {
 	if (word.charAt(word.length - 1) == "1" || word.charAt(word.length - 1) == "2") {
-		word = word.substring(0, word.length - 1);
+		return word.substring(0, word.length - 1);
 	}
 	return word;
 }
@@ -67,8 +67,8 @@ const removePartOfSpeechFromWord = (word) => {
 const getDefinition = (word, text) => {
 	text = pruneText(word, text);
 	text = formatText(text);
-	if (hidingWordsFromDefinition === true) {
-		text = hideWordsFromDefinition(word, text);
+	if (hideWordsInExampleSentences) {
+		text = hideWords(word, text);
 	}
 	return text;
 }
@@ -77,17 +77,17 @@ const getDefinition = (word, text) => {
 const pruneText = (word, text) => {
 	text = removeAdditionalInformation(text);
 	text = removeWordAndPronunciation(text);
-	if (removingDotInformation === true) {
-		text = removeDotInformation(text);
+	if (!includeDotDefinitions) {
+		text = removeDotDefinitions(text);
 	}
-	if (removingRegularVerbConjugationFormsInfo === true) {
-		text = removeRegularVerbConjugationFormsInformation(word, text)
-	} 
-	if (removingComparativeAndSuperlativeFormsInfo === true) {
-		text = removeComparativeAndSuperlativeFormsInformation(word, text);
+	if (!includeRegularVerbConjugationFormsInfo) {
+		text = removeRegularVerbConjugationFormsInfo(word, text)
 	}
-	if (removingPluralFormInfo === true) {
-		text = removePluralFormInformation(word, text);
+	if (!includeComparativeAndSuperlativeFormsInfo) {
+		text = removeComparativeAndSuperlativeFormsInfo(word, text);
+	}
+	if (!includePluralFormInfo) {
+		text = removePluralFormInfo(word, text);
 	}
 	return text;
 }
@@ -117,23 +117,23 @@ const removeWordAndPronunciation = (text) => {
 	return text;
 }
 
-const removeDotInformation = (text) => {
-		while (text.includes("•")) {
-				const startIndex = text.indexOf("•") - 1;
-				const endIndex = text.indexOf(". ", startIndex);
-				text = text.substring(0, startIndex) + text.substring(endIndex + 1);
-		}
-		return text;
+const removeDotDefinitions = (text) => {
+	while (text.includes("•")) {
+		const startIndex = text.indexOf("•") - 1;
+		const endIndex = text.indexOf(". ", startIndex);
+		text = text.substring(0, startIndex) + text.substring(endIndex + 1);
+	}
+	return text;
 }
 
-const removeRegularVerbConjugationFormsInformation = (word, text) => {
+const removeRegularVerbConjugationFormsInfo = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
 	const target = " (" + lastCharacterRemovedWord + "ies, " + word + "ing, " + lastCharacterRemovedWord + "ied)"
 	text = text.replace(target, "")
 	return text
 }
 
-const removeComparativeAndSuperlativeFormsInformation = (word, text) => {
+const removeComparativeAndSuperlativeFormsInfo = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
 	const target1 = " (" + word + "r, " + word + "st)"
 	const target2 = " (" + word + "er, " + word + "est)"
@@ -144,7 +144,7 @@ const removeComparativeAndSuperlativeFormsInformation = (word, text) => {
 	return text;
 }
 
-const removePluralFormInformation = (word, text) => {
+const removePluralFormInfo = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
 	const target = " (plural " + lastCharacterRemovedWord + "ies)"
 	return text.replace(target, "")
@@ -154,22 +154,26 @@ const removePluralFormInformation = (word, text) => {
 
 // formatting--------------------------------------------------------------------------
 const formatText = (text) => {
-	text = formatByNumbers(text);
+	text = addALineBreakBeforeEachDefinition(text);
 	text = formatByPartOfSpeech(text);
 	text = breakLineProperly(text);
 	text = deleteWhiteSpaceBeforeSquareBrackets(text);
-	if (htmlFormatting === true) {
+	if (useHtmlFormatting) {
 		text = formatByHtml(text);
 	}
 	text = text.trim();
 	return text;
 }
 
-const formatByNumbers = (text) => {
+const addALineBreakBeforeEachDefinition = (text) => {
 	for (i = 2; i < 10; i++) {
 		text = text.replaceAll(` ${i} `, linebreak + `${i} `);
 	}
-	text = text.replaceAll(" •", linebreak + "• ");
+
+	if (includeDotDefinitions) {
+		text = text.replaceAll(" •", linebreak + "• ");
+	}
+
 	return text;
 }
 
@@ -230,7 +234,7 @@ const italicizeLabels = (text) => {
 }
 
 const changeItalicizedTextColorToDarkgrey = (text) => {
-	text = text.replaceAll('<i>', `<span style="color:${exampleSentencesFontColor}"><i>`);
+	text = text.replaceAll('<i>', `<span style="color:${fontColorForExampleSentences}"><i>`);
 	text = text.replaceAll('</i>', '</i></span>');
 	return text;
 }
@@ -238,7 +242,7 @@ const changeItalicizedTextColorToDarkgrey = (text) => {
 
 
 // hiding -----------------------------------------------------------------------------
-const hideWordsFromDefinition = (word, text) => {
+const hideWords = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
 	const lastCharacter = word.substring(word.length - 1);
 
@@ -265,7 +269,7 @@ const hideWordsFromDefinition = (word, text) => {
 // -------------------------------------------------------------------------------------------
 // Getting result-----------------------------------------------------------------------------
 const produceResult = (word, definition) => {
-	if (wordFirst === true) {
+	if (wordsComeFirst) {
 		result = `${word}${separatorBetweenWordAndDefinition}${definition}${separatorBetweenResults}`;
 	} else {
 		result = `${definition}${separatorBetweenWordAndDefinition}${word}${separatorBetweenResults}`;
