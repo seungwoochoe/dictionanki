@@ -1,20 +1,20 @@
 # Dictionanki
 
-⚡️ Create your English Anki flashcards from macOS system Oxford Dictionary<br>
+Create your English Anki flashcards from macOS system Oxford Dictionary
 
 ## Features
 
-- Works without internet connection.
+- Does not require internet connection.
 - Can hide words from example sentences. Useful when you want to guess words from their definitions.
-- Can italicize and dim example sentences and labels (*[with object], archaic, mainly British, North American, Biology*, ...).
+- Can italicize and dim example sentences and labels (e.g. *[with object], archaic, mainly British, North American, Biology*, ...).
 - Can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
-- Configure as you'd like to. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+- Can be configured as you'd like to. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
 
 ## How to use
 
 <img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.jpg" width="350">  
 
-After the [setup](https://github.com/seungwoochoe/dictionanki#Setup), right click on a word that you want to put into Anki and then select Dictionanki.
+After the [setup](https://github.com/seungwoochoe/dictionanki#Setup), right click on a word that you want to put into Anki and then click Dictionanki.
 (You can also assign a shortcut for Dictionanki in macOS System Settings.)
 
 <img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="550">  
@@ -31,7 +31,7 @@ Download *Dictionanki.workflow.zip* from [Releases](https://github.com/seungwooc
 
 And voilà, you're done!
 
-Optionally, you can set some options by opening the workflow located in "~/Library (hidden folder, press `⌘⇧.`to reveal)/Services" and modifying the JavaScript inside. Check out the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js) to see the available options.
+Optionally, you can set some options by opening the workflow located in "~/Library (hidden folder, press `⌘⇧.`to reveal)/Services" and modifying the JavaScript inside. Available options are listed at the beginning of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
 
 If you'd like to create a Quick Action by yourself, you can reference the [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
 
