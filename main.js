@@ -1,25 +1,22 @@
 // Options start.
-const separatorBetweenWordAndDefinition = "\t";
-const separatorBetweenResults = "\n";
-const hideWordsInExampleSentences = true;
+const separatorBetweenWordAndItsDefinition = "\t";
+const separatorBetweenGeneratedResults = "\n";
+const shouldHideWordsInExampleSentences = true;
 const blank = "______";
-const includeDotDefinitions = false; // Dot definitions: definitions starting with "•".
-const includeRegularVerbConjugationFormsInfo = false;
-const includeComparativeAndSuperlativeFormsInfo = false;
-const includePluralFormInfo = false;
-const useHtmlFormatting = true;
+const shouldIncludeDotDefinitions = false; // Dot definitions: more specific definitions starting with "•" in Oxford Dictionary.
+const shouldIncludeRegularVerbConjugationFormsInfo = false;
+const shouldIncludeComparativeAndSuperlativeFormsInfo = false;
+const shouldIncludePluralFormInfo = false;
+const shouldUseHtmlFormatting = true;
 const fontColorForExampleSentences = "darkgrey"; // More color names: https://htmlcolorcodes.com/color-names/
-const wordsComeFirst = true; // Determines the order between word and definition in the final result.
-// Options end.
-
+const shouldWordComeBeforeItsDefinition = true;
 const linebreak = "<br>"; // Deprecated option. (You may use this option to use Dictionanki with different flashcard apps, for example, Quizlet. (Adjust linebreak between lines of definition. Choose between "<br>" and "\n"))
-
-
+// Options end.
 
 const partOfSpeechTags = ["adverb", "verb", "pronoun", "noun", "adjective", "preposition", "conjunction", "exclamation"];
 const extraInformationTags = ["PHRASES", "PHRASAL VERBS", "DERIVATIVES", "ORIGIN"];
+// Labels that contain other labels should precede the contained labels. For example, 'informal' should precede 'formal'.
 const labels = ["mainly US", "Music", "Medicine", "Linguistics", "Microbiology", "Biology", "technical", "litarary", "Chemistry", "Mathematics", "Geology", "Prosody", "Heraldry", "humorous", "Theology", "historical", "Philosophy", "&", "Scottish informal", "mainly North American", "North American,", "North American", "Northern English", "mainly British", "British", "Scottish,", "Scottish", "Logic", "Grammar", "informal,", "informal", "formal", "Baseball", "Physics", "Golf", "archaic", "US", "Computing", "Printing", "Law", "Anatomy", "Zoology", "rare", "Architecture", "Electronics", "Military", "Photography", "Geometry", "Psychoanalysis", "Botany", "or dialect", "dialect", "South Asian"];
-// The order of `labels` example: "informal" should precede "formal".
 
 
 function run(input, parameters) {
@@ -27,21 +24,19 @@ function run(input, parameters) {
 	const word = getWord(rawText);
 	const definition = getDefinition(word, rawText);
 
-	return produceResult(word, definition);
+	return orderWordAndDefinition(word, definition);
 }
-
-
 
 // --------------------------------------------------------------------------------------
 // Getting word. ------------------------------------------------------------------------
 const getWord = (text) => {
 	text = text.replaceAll("·", "");
 	text = text.split(" ")[0]; // Cannot use `|` because some words' pronunciations depend on how they are used, and pronunciation info can come after part of speech tags. (e.g. articulate)
-	text = removeWordException(text);
+	text = removeWordExceptions(text);
 	return text;
 }
 
-const removeWordException = (word) => {
+const removeWordExceptions = (word) => {
 	word = removeHomonymNumberFromWord(word); // If word has multiple groups of definitions (like bat), remove 1 after word.
 	word = removePartOfSpeechFromWord(word); // There are some words that part of seech follows right after word.
 	return word;
@@ -61,38 +56,37 @@ const removePartOfSpeechFromWord = (word) => {
 	return word;
 }
 
-
 // -----------------------------------------------------------------------------------
 // Getting definition.----------------------------------------------------------------
 const getDefinition = (word, text) => {
 	text = pruneText(word, text);
 	text = formatText(text);
-	if (hideWordsInExampleSentences) {
-		text = hideWords(word, text);
+	if (shouldHideWordsInExampleSentences) {
+		text = hideWordsInExampleSentences(word, text);
 	}
 	return text;
 }
 
 // pruning-------------------------------------------------------------------------------
 const pruneText = (word, text) => {
-	text = removeAdditionalInformation(text);
+	text = removeAdditionalInfo(text);
 	text = removeWordAndPronunciation(text);
-	if (!includeDotDefinitions) {
+	if (!shouldIncludeDotDefinitions) {
 		text = removeDotDefinitions(text);
 	}
-	if (!includeRegularVerbConjugationFormsInfo) {
+	if (!shouldIncludeRegularVerbConjugationFormsInfo) {
 		text = removeRegularVerbConjugationFormsInfo(word, text)
 	}
-	if (!includeComparativeAndSuperlativeFormsInfo) {
+	if (!shouldIncludeComparativeAndSuperlativeFormsInfo) {
 		text = removeComparativeAndSuperlativeFormsInfo(word, text);
 	}
-	if (!includePluralFormInfo) {
+	if (!shouldIncludePluralFormInfo) {
 		text = removePluralFormInfo(word, text);
 	}
 	return text;
 }
 
-const removeAdditionalInformation = (text) => {
+const removeAdditionalInfo = (text) => {
 	extraInformationTags.forEach((element) => {
 		if (text.includes(`${element}`)) {
 			text = text.substring(0, text.indexOf(`${element}`));
@@ -150,15 +144,13 @@ const removePluralFormInfo = (word, text) => {
 	return text.replace(target, "")
 }
 
-
-
 // formatting--------------------------------------------------------------------------
 const formatText = (text) => {
 	text = addALineBreakBeforeEachDefinition(text);
 	text = formatByPartOfSpeech(text);
-	text = breakLineProperly(text);
-	text = deleteWhiteSpaceBeforeSquareBrackets(text);
-	if (useHtmlFormatting) {
+	text = breakLinesProperly(text);
+	text = trimWhiteSpaceBeforeSquareBrackets(text);
+	if (shouldUseHtmlFormatting) {
 		text = formatByHtml(text);
 	}
 	text = text.trim();
@@ -170,10 +162,9 @@ const addALineBreakBeforeEachDefinition = (text) => {
 		text = text.replaceAll(` ${i} `, linebreak + `${i} `);
 	}
 
-	if (includeDotDefinitions) {
+	if (shouldIncludeDotDefinitions) {
 		text = text.replaceAll(" •", linebreak + "• ");
 	}
-
 	return text;
 }
 
@@ -187,7 +178,7 @@ const formatByPartOfSpeech = (text) => {
 	return text;
 }
 
-const breakLineProperly = (text) => {
+const breakLinesProperly = (text) => {
 	partOfSpeechTags.forEach((element) => {
 		let regexWithSquareBrackets = new RegExp(`(${element})\\<br\\>(\\(?[^\\<\\d]*?\\)?) ?(\\[.*?\\]) `, 'g');
 		text = text.replace(regexWithSquareBrackets, `$1 $2 $3${linebreak}`);
@@ -197,18 +188,17 @@ const breakLineProperly = (text) => {
 	return text;
 }
 
-const deleteWhiteSpaceBeforeSquareBrackets = (text) => {
+const trimWhiteSpaceBeforeSquareBrackets = (text) => {
 	return text.replace(" ]", "]")
 }
 
 const formatByHtml = (text) => {
 	text = italicizeExampleSentences(text);
-	text = italicizeSquareBracketWords(text);
+	text = italicizeUsageInfo(text);
 	text = italicizeLabels(text);
 	text = changeItalicizedTextColorToDarkgrey(text);
 	return text;
 }
-
 
 const italicizeExampleSentences = (text) => {
 	while (text.includes(": ")) {
@@ -220,7 +210,7 @@ const italicizeExampleSentences = (text) => {
 	return text;
 }
 
-const italicizeSquareBracketWords = (text) => {
+const italicizeUsageInfo = (text) => {
 	text = text.replaceAll("[", "<i>[");
 	text = text.replaceAll("]", "]</i>");
 	return text;
@@ -239,10 +229,8 @@ const changeItalicizedTextColorToDarkgrey = (text) => {
 	return text;
 }
 
-
-
 // hiding -----------------------------------------------------------------------------
-const hideWords = (word, text) => {
+const hideWordsInExampleSentences = (word, text) => {
 	const lastCharacterRemovedWord = word.substring(0, word.length - 1);
 	const lastCharacter = word.substring(word.length - 1);
 
@@ -267,12 +255,12 @@ const hideWords = (word, text) => {
 }
 
 // -------------------------------------------------------------------------------------------
-// Getting result-----------------------------------------------------------------------------
-const produceResult = (word, definition) => {
-	if (wordsComeFirst) {
-		result = `${word}${separatorBetweenWordAndDefinition}${definition}${separatorBetweenResults}`;
+// Getting the result-----------------------------------------------------------------------------
+const orderWordAndDefinition = (word, definition) => {
+	if (shouldWordComeBeforeItsDefinition) {
+		result = `${word}${separatorBetweenWordAndItsDefinition}${definition}${separatorBetweenGeneratedResults}`;
 	} else {
-		result = `${definition}${separatorBetweenWordAndDefinition}${word}${separatorBetweenResults}`;
+		result = `${definition}${separatorBetweenWordAndItsDefinition}${word}${separatorBetweenGeneratedResults}`;
 	}
 	return result;
 }
