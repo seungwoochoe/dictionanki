@@ -14,7 +14,7 @@ Create your English Anki flashcards from macOS system Oxford Dictionary
 
 <img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/1.jpg" width="350">  
 
-After the [setup](https://github.com/seungwoochoe/dictionanki#Setup), right click on a word that you want to put into Anki and then click Dictionanki.
+After the [setup](https://github.com/seungwoochoe/dictionanki?tab=readme-ov-file#setup), right click on a word that you want to put into Anki and then click Dictionanki.
 (You can also assign a shortcut for Dictionanki in macOS System Settings.)
 
 <img src="https://github.com/seungwoochoe/dictionanki/blob/main/images/2.png" width="550">  
