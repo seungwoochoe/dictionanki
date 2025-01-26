@@ -224,7 +224,7 @@ const italicizeLabels = (text) => {
 }
 
 const changeItalicizedTextColorToDarkgrey = (text) => {
-	text = text.replaceAll('<i>', `<span style="color:${fontColorForExampleSentences}"><i>`);
+	text = text.replaceAll('<i>', `<span style='color:${fontColorForExampleSentences}'><i>`);
 	text = text.replaceAll('</i>', '</i></span>');
 	return text;
 }
@@ -264,3 +264,11 @@ const orderWordAndDefinition = (word, definition) => {
 	}
 	return result;
 }
+
+// -----------------------------------------------------------------------
+// For testing
+// -----------------------------------------------------------------------
+
+// module.exports = {
+// 	run
+// };
