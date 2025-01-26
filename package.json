@@ -1,0 +1,23 @@
+{
+  "name": "dictionanki",
+  "version": "1.0.0",
+  "description": "Create your English Anki flashcards from macOS system Oxford Dictionary",
+  "main": "dictionanki.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seungwoochoe/dictionanki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seungwoochoe/dictionanki/issues"
+  },
+  "homepage": "https://github.com/seungwoochoe/dictionanki#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
