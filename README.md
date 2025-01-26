@@ -8,7 +8,7 @@ Create your English Anki flashcards from macOS system Oxford Dictionary
 - Can hide words from example sentences. Useful when you want to guess words from their definitions.
 - Can italicize and dim example sentences and labels (e.g. *[with object], archaic, mainly British, North American, Biology*, ...).
 - Can prune extra information like comparative and superlative form information, plural form information, regular verb conjugation forms information, *ORIGIN* part, and more specific definitions that are starting with "•".
-- Can be configured as you'd like to. Check out the options in the first few lines of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+- Can be configured as you'd like to. Check out the options in the first few lines of [dictionanki.js](https://github.com/seungwoochoe/dictionanki/blob/main/dictionanki.js).
 
 ## How to use
 
@@ -31,7 +31,7 @@ Download *Dictionanki.workflow.zip* from [Releases](https://github.com/seungwooc
 
 And voilà, you're done!
 
-Optionally, you can set some options by opening the workflow located in "~/Library (hidden folder, press `⌘⇧.`to reveal)/Services" and modifying the JavaScript inside. Available options are listed at the beginning of [main.js](https://github.com/seungwoochoe/dictionanki/blob/main/main.js).
+Optionally, you can set some options by opening the workflow located in "~/Library (hidden folder, press `⌘⇧.`to reveal)/Services" and modifying the JavaScript inside. Available options are listed at the beginning of [dictionanki.js](https://github.com/seungwoochoe/dictionanki/blob/main/dictionanki.js).
 
 If you'd like to create a Quick Action by yourself, you can reference the [Quick Action example](https://github.com/seungwoochoe/dictionanki#quick-action-example) below.
 
